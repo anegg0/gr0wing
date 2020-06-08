@@ -1,0 +1,208 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Tbl Trays"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-tbl-tray",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getTblTraysResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "TrayId",
+                            "value": "${event.TrayId}"
+                          }
+                        ],
+                        "path": "edit-tbl-tray",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "CustomerId",
+                      "sortProperty": "TblCustomer.CustomerContactName",
+                      "filterProperty": "TblCustomer.CustomerContactName",
+                      "template": "${data.TblCustomer?.CustomerContactName}",
+                      "title": "Tbl Customer"
+                    },
+                    {
+                      "property": "ExpiryDate",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Expiry Date"
+                    },
+                    {
+                      "property": "SeedId",
+                      "sortProperty": "TblSeed.CurrentDTM",
+                      "filterProperty": "TblSeed.CurrentDTM",
+                      "template": "${data.TblSeed?.CurrentDTM}",
+                      "title": "Tbl Seed"
+                    },
+                    {
+                      "property": "Status",
+                      "title": "Status"
+                    },
+                    {
+                      "property": "TrayId",
+                      "title": "Tray Id"
+                    },
+                    {
+                      "property": "TraySequenceNumber",
+                      "title": "Tray Sequence Number"
+                    },
+                    {
+                      "property": "TraySowingDate",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Tray Sowing Date"
+                    },
+                    {
+                      "property": "TrayTypeId",
+                      "sortProperty": "TblTrayType.TrayHandle",
+                      "filterProperty": "TblTrayType.TrayHandle",
+                      "template": "${data.TblTrayType?.TrayHandle}",
+                      "title": "Tbl Tray Type"
+                    },
+                    {
+                      "property": "TrayUpdateDate",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Tray Update Date"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete TblTray",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "growing.deleteTblTray",
+                                "parameters": [
+                                  {
+                                    "name": "TrayId",
+                                    "value": "${data.TrayId}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "Growing.Models.Growing.TblTray"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "growing.getTblTrays",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getTblTraysResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<Growing.Models.Growing.TblTray>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Tbl Trays",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

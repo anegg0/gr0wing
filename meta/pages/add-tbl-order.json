@@ -1,0 +1,290 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tbl Customer",
+                              "component": "CustomerId",
+                              "name": "CustomerIdLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getTblCustomersForCustomerIdResult}",
+                              "textProperty": "CustomerContactName",
+                              "valueProperty": "CustomerId",
+                              "placeholder": "Choose TblCustomer",
+                              "valueType": "int?",
+                              "type": "dropdown-datagrid",
+                              "name": "CustomerId",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblorder.CustomerId}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Order Delivered",
+                              "component": "OrderDelivered",
+                              "name": "OrderDeliveredLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "bool",
+                              "type": "checkbox",
+                              "name": "OrderDelivered",
+                              "value": "${tblorder.OrderDelivered}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Order Delivery Date",
+                              "component": "OrderDeliveryDate",
+                              "name": "OrderDeliveryDateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "OrderDeliveryDate",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tblorder.OrderDeliveryDate}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "OrderDeliveryDateRequiredValidator",
+                              "component": "OrderDeliveryDate",
+                              "text": "OrderDeliveryDate is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Order Sequence",
+                              "component": "OrderSequence",
+                              "name": "OrderSequenceLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "OrderSequence",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tblorder.OrderSequence}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "OrderSequenceRequiredValidator",
+                              "component": "OrderSequence",
+                              "text": "OrderSequence is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new TblOrder!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "growing.createTblOrder",
+                        "parameters": [
+                          {
+                            "name": "TblOrder",
+                            "value": "${tblorder}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${tblorder}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "data": "${tblorder}",
+                  "visible": "${tblorder != null}",
+                  "itemType": "Growing.Models.Growing.TblOrder"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "growing.getTblCustomers",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getTblCustomersForCustomerIdResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<Growing.Models.Growing.TblCustomer>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "tblorder",
+        "type": "set",
+        "value": "new Growing.Models.Growing.TblOrder(){}",
+        "valueType": "Growing.Models.Growing.TblOrder"
+      }
+    ]
+  },
+  "name": "Add Tbl Order",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

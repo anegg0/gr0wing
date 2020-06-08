@@ -1,0 +1,1 @@
+{"deploy":{"provider":"zip","server":"","user":"","password":"","siteName":"/","connectionStrings":{"growing":{"value":"Server=localhost;Database=growing;Uid=root;Pwd=;Connection Timeout=30"}},"endPoints":{}}}

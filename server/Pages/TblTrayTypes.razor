@@ -1,0 +1,46 @@
+﻿@page "/tbl-tray-types"
+@layout MainLayout
+@inherits Growing.Pages.TblTrayTypesComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using Growing.Models.Growing
+@using Microsoft.AspNetCore.Identity
+@using Growing.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Tbl Tray Types">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblTrayTypesResult" TItem="Growing.Models.Growing.TblTrayType" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblTrayType" Property="TrayHandle" Title="Tray Handle">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblTrayType" Property="TrayHeight" Title="Tray Height">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblTrayType" Property="TrayLength" Title="Tray Length">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblTrayType" Property="TrayName" Title="Tray Name">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblTrayType" Property="TrayTypeId" Title="Tray Type Id">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblTrayType" Property="TrayWidth" Title="Tray Width">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblTrayType" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="growingModelsGrowingTblTrayType">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, growingModelsGrowingTblTrayType))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenGridColumn>
+          </Columns>
+        </RadzenGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

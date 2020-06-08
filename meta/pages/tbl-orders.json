@@ -1,0 +1,184 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Tbl Orders"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-tbl-order",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getTblOrdersResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "OrderId",
+                            "value": "${event.OrderId}"
+                          }
+                        ],
+                        "path": "edit-tbl-order",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "CustomerId",
+                      "sortProperty": "TblCustomer.CustomerContactName",
+                      "filterProperty": "TblCustomer.CustomerContactName",
+                      "template": "${data.TblCustomer?.CustomerContactName}",
+                      "title": "Tbl Customer"
+                    },
+                    {
+                      "property": "OrderDelivered",
+                      "title": "Order Delivered"
+                    },
+                    {
+                      "property": "OrderDeliveryDate",
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "title": "Order Delivery Date"
+                    },
+                    {
+                      "property": "OrderId",
+                      "title": "Order Id"
+                    },
+                    {
+                      "property": "OrderSequence",
+                      "title": "Order Sequence"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete TblOrder",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "growing.deleteTblOrder",
+                                "parameters": [
+                                  {
+                                    "name": "OrderId",
+                                    "value": "${data.OrderId}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "Growing.Models.Growing.TblOrder"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "growing.getTblOrders",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getTblOrdersResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<Growing.Models.Growing.TblOrder>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Tbl Orders",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

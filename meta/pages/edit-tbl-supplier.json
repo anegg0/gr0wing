@@ -1,0 +1,442 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "type": "template-form",
+                  "name": "form0",
+                  "components": [
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supplier Contact Name",
+                              "component": "SupplierContactName",
+                              "name": "SupplierContactNameLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 40,
+                              "type": "textbox",
+                              "name": "SupplierContactName",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tblsupplier.SupplierContactName}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "SupplierContactNameRequiredValidator",
+                              "component": "SupplierContactName",
+                              "text": "SupplierContactName is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supplier Country",
+                              "component": "SupplierCountry",
+                              "name": "SupplierCountryLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "SupplierCountry",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblsupplier.SupplierCountry}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supplier Phone Number 1",
+                              "component": "SupplierPhoneNumber1",
+                              "name": "SupplierPhoneNumber1Label",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "SupplierPhoneNumber1",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblsupplier.SupplierPhoneNumber1}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supplier Phone Number 2",
+                              "component": "SupplierPhoneNumber2",
+                              "name": "SupplierPhoneNumber2Label",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "SupplierPhoneNumber2",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblsupplier.SupplierPhoneNumber2}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supplier State",
+                              "component": "SupplierState",
+                              "name": "SupplierStateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "SupplierState",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblsupplier.SupplierState}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supplier Street Address 1",
+                              "component": "SupplierStreetAddress1",
+                              "name": "SupplierStreetAddress1Label",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 100,
+                              "type": "textbox",
+                              "name": "SupplierStreetAddress1",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblsupplier.SupplierStreetAddress1}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supplier Street Address 2",
+                              "component": "SupplierStreetAddress2",
+                              "name": "SupplierStreetAddress2Label",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 100,
+                              "type": "textbox",
+                              "name": "SupplierStreetAddress2",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblsupplier.SupplierStreetAddress2}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Supplier Zipcode",
+                              "component": "SupplierZipcode",
+                              "name": "SupplierZipcodeLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "SupplierZipcode",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblsupplier.SupplierZipcode}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "type": "button",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "buttonStyle": "primary"
+                            },
+                            {
+                              "type": "button",
+                              "buttonStyle": "light",
+                              "text": "Cancel",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update TblSupplier",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "growing.updateTblSupplier",
+                        "parameters": [
+                          {
+                            "name": "SupplierId",
+                            "value": "${parameters.SupplierId}"
+                          },
+                          {
+                            "name": "TblSupplier",
+                            "value": "${tblsupplier}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "close-popup",
+                            "result": "${tblsupplier}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "Growing.Models.Growing.TblSupplier",
+                  "data": "${tblsupplier}",
+                  "visible": "${tblsupplier != null}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "growing.getTblSupplierBySupplierId",
+        "parameters": [
+          {
+            "name": "SupplierId",
+            "value": "${parameters.SupplierId}"
+          }
+        ],
+        "then": [
+          {
+            "name": "tblsupplier",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "Growing.Models.Growing.TblSupplier"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Tbl Supplier",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

@@ -1,0 +1,59 @@
+﻿@page "/tbl-seeds"
+@layout MainLayout
+@inherits Growing.Pages.TblSeedsComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using Growing.Models.Growing
+@using Microsoft.AspNetCore.Identity
+@using Growing.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Tbl Seeds">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblSeedsResult" TItem="Growing.Models.Growing.TblSeed" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="CurrentDTM" Title="Current DTM">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="DTM1" Title="DTM 1">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="DTM2" Title="DTM 2">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="DTM3" Title="DTM 3">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="DTM4" Title="DTM 4">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="SeasonId" SortProperty="TblSeason.SeasonName" FilterProperty="TblSeason.SeasonName" Title="Tbl Season">
+              <Template Context="data">
+              @(data.TblSeason?.SeasonName)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="SeedHandle" Title="Seed Handle">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="SeedId" Title="Seed Id">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="SeedingRate" Title="Seeding Rate">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="SeedLifetime" Title="Seed Lifetime">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Property="SeedName" Title="Seed Name">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeed" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="growingModelsGrowingTblSeed">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, growingModelsGrowingTblSeed))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenGridColumn>
+          </Columns>
+        </RadzenGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

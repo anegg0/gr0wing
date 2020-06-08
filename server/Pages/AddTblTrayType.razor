@@ -1,0 +1,92 @@
+﻿@page "/add-tbl-tray-type"
+@layout MainLayout
+@inherits Growing.Pages.AddTblTrayTypeComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using Growing.Models.Growing
+@using Microsoft.AspNetCore.Identity
+@using Growing.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@tbltraytype" Visible="@(tbltraytype != null)" TItem="Growing.Models.Growing.TblTrayType" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tray Handle" Component="TrayHandle" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayHandle)" Name="TrayHandle">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="TrayHandle" Text="TrayHandle is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tray Height" Component="TrayHeight" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayHeight)" Name="TrayHeight">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="TrayHeight" Text="TrayHeight is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tray Length" Component="TrayLength" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayLength)" Name="TrayLength">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="TrayLength" Text="TrayLength is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tray Name" Component="TrayName" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayName)" Name="TrayName">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="TrayName" Text="TrayName is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tray Width" Component="TrayWidth" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayWidth)" Name="TrayWidth">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="TrayWidth" Text="TrayWidth is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

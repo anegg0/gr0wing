@@ -1,0 +1,200 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Tbl Customers"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button",
+                  "events": {
+                    "click": [
+                      {
+                        "path": "add-tbl-customer",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "grid0.Reload();",
+                            "type": "execute"
+                          },
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "grid0",
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "data": "${getTblCustomersResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "CustomerId",
+                            "value": "${event.CustomerId}"
+                          }
+                        ],
+                        "path": "edit-tbl-customer",
+                        "type": "popup",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "CustomerContactName",
+                      "title": "Customer Contact Name"
+                    },
+                    {
+                      "property": "CustomerCountry",
+                      "title": "Customer Country"
+                    },
+                    {
+                      "property": "CustomerId",
+                      "title": "Customer Id"
+                    },
+                    {
+                      "property": "CustomerName",
+                      "title": "Customer Name"
+                    },
+                    {
+                      "property": "CustomerPhoneNumber1",
+                      "title": "Customer Phone Number 1"
+                    },
+                    {
+                      "property": "CustomerPhoneNumber2",
+                      "title": "Customer Phone Number 2"
+                    },
+                    {
+                      "property": "CustomerState",
+                      "title": "Customer State"
+                    },
+                    {
+                      "property": "CustomerStreetAddress1",
+                      "title": "Customer Street Address 1"
+                    },
+                    {
+                      "property": "CustomerStreetAddress2",
+                      "title": "Customer Street Address 2"
+                    },
+                    {
+                      "property": "CustomerZipcode",
+                      "title": "Customer Zipcode"
+                    },
+                    {
+                      "filterable": false,
+                      "sortable": false,
+                      "width": "70px",
+                      "textAlign": "center",
+                      "template": [
+                        {
+                          "attributes": [
+                            {
+                              "name": "@onclick:stopPropagation",
+                              "value": true
+                            }
+                          ],
+                          "buttonStyle": "danger",
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "text": "",
+                          "size": "sm",
+                          "type": "button",
+                          "events": {
+                            "click": [
+                              {
+                                "error": [
+                                  {
+                                    "detail": "Unable to delete TblCustomer",
+                                    "severity": "error",
+                                    "summary": "Error",
+                                    "type": "notify"
+                                  }
+                                ],
+                                "name": "growing.deleteTblCustomer",
+                                "parameters": [
+                                  {
+                                    "name": "CustomerId",
+                                    "value": "${data.CustomerId}"
+                                  }
+                                ],
+                                "then": [
+                                  {
+                                    "code": "grid0.Reload();",
+                                    "condition": "result != null",
+                                    "type": "execute"
+                                  }
+                                ],
+                                "type": "invoke"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "type": "grid",
+                  "itemType": "Growing.Models.Growing.TblCustomer"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "growing.getTblCustomers",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getTblCustomersResult",
+            "type": "set",
+            "value": "${result}",
+            "valueType": "IEnumerable<Growing.Models.Growing.TblCustomer>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Tbl Customers",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

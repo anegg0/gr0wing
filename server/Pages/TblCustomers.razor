@@ -1,0 +1,55 @@
+﻿@page "/"
+@page "/tbl-customers"
+@layout MainLayout
+@inherits Growing.Pages.TblCustomersComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using Growing.Models.Growing
+@using Microsoft.AspNetCore.Identity
+@using Growing.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Tbl Customers">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblCustomersResult" TItem="Growing.Models.Growing.TblCustomer" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerContactName" Title="Customer Contact Name">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerCountry" Title="Customer Country">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerId" Title="Customer Id">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerName" Title="Customer Name">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerPhoneNumber1" Title="Customer Phone Number 1">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerPhoneNumber2" Title="Customer Phone Number 2">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerState" Title="Customer State">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerStreetAddress1" Title="Customer Street Address 1">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerStreetAddress2" Title="Customer Street Address 2">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Property="CustomerZipcode" Title="Customer Zipcode">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblCustomer" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="growingModelsGrowingTblCustomer">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, growingModelsGrowingTblCustomer))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenGridColumn>
+          </Columns>
+        </RadzenGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

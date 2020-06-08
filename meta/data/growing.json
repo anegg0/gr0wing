@@ -1,0 +1,1635 @@
+{
+  "info": {
+    "title": "growing",
+    "x-type": "odata",
+    "x-connector": "mysql"
+  },
+  "definitions": {
+    "TblCustomer": {
+      "x-table": "def.tblCustomer",
+      "resource": "TblCustomers",
+      "required": [
+        "CustomerContactName",
+        "CustomerName"
+      ],
+      "properties": {
+        "CustomerContactName": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 40
+        },
+        "CustomerCountry": {
+          "type": "string",
+          "length": 20
+        },
+        "CustomerId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "TblCustomer",
+              "name": "TblOrders",
+              "type": "TblOrder"
+            },
+            {
+              "inversePropertyName": "TblCustomer",
+              "name": "TblTrays",
+              "type": "TblTray"
+            }
+          ]
+        },
+        "CustomerName": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "CustomerPhoneNumber1": {
+          "type": "string",
+          "length": 20
+        },
+        "CustomerPhoneNumber2": {
+          "type": "string",
+          "length": 20
+        },
+        "CustomerState": {
+          "type": "string",
+          "length": 20
+        },
+        "CustomerStreetAddress1": {
+          "x-original-name": "CustomerStreetAddress 1",
+          "type": "string",
+          "length": 100
+        },
+        "CustomerStreetAddress2": {
+          "x-original-name": "CustomerStreetAddress 2",
+          "type": "string",
+          "length": 100
+        },
+        "CustomerZipcode": {
+          "type": "string",
+          "length": 20
+        },
+        "TblOrders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TblOrder"
+          }
+        },
+        "TblTrays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TblTray"
+          }
+        }
+      }
+    },
+    "TblOrder": {
+      "x-table": "def.tblOrder",
+      "resource": "TblOrders",
+      "required": [
+        "OrderDeliveryDate",
+        "OrderSequence"
+      ],
+      "properties": {
+        "TblCustomer": {
+          "type": "object",
+          "$ref": "#/definitions/TblCustomer"
+        },
+        "CustomerId": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "tblCustomer",
+            "parentEntityType": "TblCustomer",
+            "type": "TblCustomer",
+            "principalKey": "CustomerId",
+            "name": "TblCustomer",
+            "textProperty": "CustomerContactName",
+            "navigationProperty": "TblOrders"
+          }
+        },
+        "OrderDelivered": {
+          "x-nullable": false,
+          "type": "boolean"
+        },
+        "OrderDeliveryDate": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "OrderId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "OrderSequence": {
+          "x-nullable": false,
+          "type": "integer"
+        }
+      }
+    },
+    "TblSeason": {
+      "x-table": "def.tblSeason",
+      "resource": "TblSeasons",
+      "required": [
+        "SeasonName"
+      ],
+      "properties": {
+        "SeasonId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "TblSeason",
+              "name": "TblSeeds",
+              "type": "TblSeed"
+            }
+          ]
+        },
+        "SeasonName": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "TblSeeds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TblSeed"
+          }
+        }
+      }
+    },
+    "TblSeed": {
+      "x-table": "def.tblSeed",
+      "resource": "TblSeeds",
+      "required": [
+        "CurrentDTM",
+        "SeasonId",
+        "SeedHandle",
+        "SeedingRate",
+        "SeedLifetime",
+        "SeedName"
+      ],
+      "properties": {
+        "CurrentDTM": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "DTM1": {
+          "type": "string",
+          "length": 11
+        },
+        "DTM2": {
+          "type": "string",
+          "length": 11
+        },
+        "DTM3": {
+          "type": "string",
+          "length": 11
+        },
+        "DTM4": {
+          "type": "string",
+          "length": 11
+        },
+        "TblSeason": {
+          "type": "object",
+          "$ref": "#/definitions/TblSeason"
+        },
+        "SeasonId": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "tblSeason",
+            "parentEntityType": "TblSeason",
+            "type": "TblSeason",
+            "principalKey": "SeasonId",
+            "name": "TblSeason",
+            "textProperty": "SeasonName",
+            "navigationProperty": "TblSeeds"
+          }
+        },
+        "SeedHandle": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "SeedId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "TblSeed",
+              "name": "TblTrays",
+              "type": "TblTray"
+            }
+          ]
+        },
+        "SeedingRate": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "SeedLifetime": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "SeedName": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "TblTrays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TblTray"
+          }
+        }
+      }
+    },
+    "TblSupplier": {
+      "x-table": "def.tblSupplier",
+      "resource": "TblSuppliers",
+      "required": [
+        "SupplierContactName"
+      ],
+      "properties": {
+        "SupplierContactName": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 40
+        },
+        "SupplierCountry": {
+          "type": "string",
+          "length": 20
+        },
+        "SupplierId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "SupplierPhoneNumber1": {
+          "type": "string",
+          "length": 20
+        },
+        "SupplierPhoneNumber2": {
+          "type": "string",
+          "length": 20
+        },
+        "SupplierState": {
+          "type": "string",
+          "length": 20
+        },
+        "SupplierStreetAddress1": {
+          "x-original-name": "SupplierStreetAddress 1",
+          "type": "string",
+          "length": 100
+        },
+        "SupplierStreetAddress2": {
+          "x-original-name": "SupplierStreetAddress 2",
+          "type": "string",
+          "length": 100
+        },
+        "SupplierZipcode": {
+          "type": "string",
+          "length": 20
+        }
+      }
+    },
+    "TblTray": {
+      "x-table": "def.tblTray",
+      "resource": "TblTrays",
+      "required": [
+        "TraySequenceNumber",
+        "TraySowingDate",
+        "TrayUpdateDate"
+      ],
+      "properties": {
+        "TblCustomer": {
+          "type": "object",
+          "$ref": "#/definitions/TblCustomer"
+        },
+        "CustomerId": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "tblCustomer",
+            "parentEntityType": "TblCustomer",
+            "type": "TblCustomer",
+            "principalKey": "CustomerId",
+            "name": "TblCustomer",
+            "textProperty": "CustomerContactName",
+            "navigationProperty": "TblTrays"
+          }
+        },
+        "ExpiryDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "TblSeed": {
+          "type": "object",
+          "$ref": "#/definitions/TblSeed"
+        },
+        "SeedId": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "tblSeed",
+            "parentEntityType": "TblSeed",
+            "type": "TblSeed",
+            "principalKey": "SeedId",
+            "name": "TblSeed",
+            "textProperty": "CurrentDTM",
+            "navigationProperty": "TblTrays"
+          }
+        },
+        "Status": {
+          "type": "string",
+          "length": 50
+        },
+        "TrayId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "TraySequenceNumber": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "TraySowingDate": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "TblTrayType": {
+          "type": "object",
+          "$ref": "#/definitions/TblTrayType"
+        },
+        "TrayTypeId": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "tblTrayType",
+            "parentEntityType": "TblTrayType",
+            "type": "TblTrayType",
+            "principalKey": "TrayTypeId",
+            "name": "TblTrayType",
+            "textProperty": "TrayHandle",
+            "navigationProperty": "TblTrays"
+          }
+        },
+        "TrayUpdateDate": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "TblTrayType": {
+      "x-table": "def.tblTrayType",
+      "resource": "TblTrayTypes",
+      "required": [
+        "TrayHandle",
+        "TrayHeight",
+        "TrayLength",
+        "TrayName",
+        "TrayWidth"
+      ],
+      "properties": {
+        "TrayHandle": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "TrayHeight": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "TrayLength": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "TrayName": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "TrayTypeId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "TblTrayType",
+              "name": "TblTrays",
+              "type": "TblTray"
+            }
+          ]
+        },
+        "TrayWidth": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "TblTrays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TblTray"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/TblCustomers": {
+      "get": {
+        "operationId": "getTblCustomers",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/TblCustomer"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTblCustomer",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblCustomer",
+            "schema": {
+              "$ref": "#/definitions/TblCustomer"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/TblCustomer"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblOrders": {
+      "get": {
+        "operationId": "getTblOrders",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/TblOrder"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTblOrder",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblOrder",
+            "schema": {
+              "$ref": "#/definitions/TblOrder"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/TblOrder"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblSeasons": {
+      "get": {
+        "operationId": "getTblSeasons",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/TblSeason"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTblSeason",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblSeason",
+            "schema": {
+              "$ref": "#/definitions/TblSeason"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/TblSeason"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblSeeds": {
+      "get": {
+        "operationId": "getTblSeeds",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/TblSeed"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTblSeed",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblSeed",
+            "schema": {
+              "$ref": "#/definitions/TblSeed"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/TblSeed"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblSuppliers": {
+      "get": {
+        "operationId": "getTblSuppliers",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/TblSupplier"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTblSupplier",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblSupplier",
+            "schema": {
+              "$ref": "#/definitions/TblSupplier"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/TblSupplier"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblTrays": {
+      "get": {
+        "operationId": "getTblTrays",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/TblTray"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTblTray",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblTray",
+            "schema": {
+              "$ref": "#/definitions/TblTray"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/TblTray"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblTrayTypes": {
+      "get": {
+        "operationId": "getTblTrayTypes",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/TblTrayType"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTblTrayType",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblTrayType",
+            "schema": {
+              "$ref": "#/definitions/TblTrayType"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/TblTrayType"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblCustomers({CustomerId})": {
+      "delete": {
+        "operationId": "deleteTblCustomer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "CustomerId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTblCustomerByCustomerId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "CustomerId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/TblCustomer"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTblCustomer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "CustomerId",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "TblCustomer",
+            "schema": {
+              "$ref": "#/definitions/TblCustomer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTblCustomerChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblCustomer",
+            "schema": {
+              "$ref": "#/definitions/TblCustomer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblOrders({OrderId})": {
+      "delete": {
+        "operationId": "deleteTblOrder",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "OrderId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTblOrderByOrderId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "OrderId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/TblOrder"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTblOrder",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "OrderId",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "TblOrder",
+            "schema": {
+              "$ref": "#/definitions/TblOrder"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTblOrderChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblOrder",
+            "schema": {
+              "$ref": "#/definitions/TblOrder"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblSeasons({SeasonId})": {
+      "delete": {
+        "operationId": "deleteTblSeason",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SeasonId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTblSeasonBySeasonId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SeasonId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/TblSeason"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTblSeason",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SeasonId",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "TblSeason",
+            "schema": {
+              "$ref": "#/definitions/TblSeason"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTblSeasonChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblSeason",
+            "schema": {
+              "$ref": "#/definitions/TblSeason"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblSeeds({SeedId})": {
+      "delete": {
+        "operationId": "deleteTblSeed",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SeedId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTblSeedBySeedId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SeedId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/TblSeed"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTblSeed",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SeedId",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "TblSeed",
+            "schema": {
+              "$ref": "#/definitions/TblSeed"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTblSeedChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblSeed",
+            "schema": {
+              "$ref": "#/definitions/TblSeed"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblSuppliers({SupplierId})": {
+      "delete": {
+        "operationId": "deleteTblSupplier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SupplierId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTblSupplierBySupplierId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SupplierId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/TblSupplier"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTblSupplier",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "SupplierId",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "TblSupplier",
+            "schema": {
+              "$ref": "#/definitions/TblSupplier"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTblSupplierChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblSupplier",
+            "schema": {
+              "$ref": "#/definitions/TblSupplier"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblTrays({TrayId})": {
+      "delete": {
+        "operationId": "deleteTblTray",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "TrayId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTblTrayByTrayId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "TrayId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/TblTray"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTblTray",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "TrayId",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "TblTray",
+            "schema": {
+              "$ref": "#/definitions/TblTray"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTblTrayChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblTray",
+            "schema": {
+              "$ref": "#/definitions/TblTray"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/TblTrayTypes({TrayTypeId})": {
+      "delete": {
+        "operationId": "deleteTblTrayType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "TrayTypeId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTblTrayTypeByTrayTypeId",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "TrayTypeId",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/TblTrayType"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTblTrayType",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "TrayTypeId",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "TblTrayType",
+            "schema": {
+              "$ref": "#/definitions/TblTrayType"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "cancel": {
+        "operationId": "cancelTblTrayTypeChanges",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "TblTrayType",
+            "schema": {
+              "$ref": "#/definitions/TblTrayType"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/growing",
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ]
+}

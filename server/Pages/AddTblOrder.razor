@@ -1,0 +1,76 @@
+﻿@page "/add-tbl-order"
+@layout MainLayout
+@inherits Growing.Pages.AddTblOrderComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using Growing.Models.Growing
+@using Microsoft.AspNetCore.Identity
+@using Growing.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@tblorder" Visible="@(tblorder != null)" TItem="Growing.Models.Growing.TblOrder" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tbl Customer" Component="CustomerId" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Data="@getTblCustomersForCustomerIdResult" TextProperty="CustomerContactName" ValueProperty="CustomerId" Placeholder="Choose TblCustomer" style="width: 100%" @bind-Value="@(tblorder.CustomerId)" Name="CustomerId">
+                </RadzenDropDownDataGrid>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Order Delivered" Component="OrderDelivered" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenCheckBox @bind-Value="@(tblorder.OrderDelivered)" Name="OrderDelivered">
+                </RadzenCheckBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Order Delivery Date" Component="OrderDeliveryDate" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@(tblorder.OrderDeliveryDate)" Name="OrderDeliveryDate">
+                </RadzenDatePicker>
+                <RadzenRequiredValidator Component="OrderDeliveryDate" Text="OrderDeliveryDate is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Order Sequence" Component="OrderSequence" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenNumeric style="display: block; width: 100%" @bind-Value="@(tblorder.OrderSequence)" Name="OrderSequence">
+                </RadzenNumeric>
+                <RadzenRequiredValidator Component="OrderSequence" Text="OrderSequence is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>

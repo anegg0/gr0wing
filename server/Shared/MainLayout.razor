@@ -1,0 +1,75 @@
+﻿@inherits Growing.Layouts.MainLayoutComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using Growing.Models.Growing
+@using Microsoft.AspNetCore.Identity
+@using Growing.Models
+<RadzenDialog />
+<RadzenNotification />
+
+<RadzenHeader>
+  <ChildContent>
+    <div class="row justify-content-start align-items-center">
+      <div class="col-md-6 d-flex align-items-center">
+        <RadzenSidebarToggle Click="@SidebarToggle0Click">
+        </RadzenSidebarToggle>
+        <RadzenLabel Text="growing">
+        </RadzenLabel>
+      </div>
+      <div class="col-md-6 text-lg-right">
+        <RadzenProfileMenu Visible="@(Security.IsAuthenticated())" Click="@Profilemenu0Click">
+          <ChildContent>
+            <RadzenProfileMenuItem Path="profile" Icon="settings" Text="Profile" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+            </RadzenProfileMenuItem>
+            <RadzenProfileMenuItem Path="application-users" Icon="person" Text="Users" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+            </RadzenProfileMenuItem>
+            <RadzenProfileMenuItem Path="application-roles" Icon="security" Text="Roles" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+            </RadzenProfileMenuItem>
+            <RadzenProfileMenuItem Text="Logout" Value="Logout" Icon="power_settings_new">
+            </RadzenProfileMenuItem>
+          </ChildContent>
+          <Template>
+            <RadzenGravatar Email="@(Security.User?.Name)">
+            </RadzenGravatar>
+          </Template>
+        </RadzenProfileMenu>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenHeader>
+<RadzenBody @ref="body0">
+  <ChildContent>
+    <RadzenContentContainer Name="main">
+    @Body
+    </RadzenContentContainer>
+  </ChildContent>
+</RadzenBody>
+<RadzenSidebar @ref="sidebar0">
+  <ChildContent>
+    <RadzenPanelMenu style="height: 100%">
+      <ChildContent>
+        <RadzenPanelMenuItem Text="Tbl Customers" Path="tbl-customers" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Tbl Orders" Path="tbl-orders" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Tbl Seasons" Path="tbl-seasons" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Tbl Seeds" Path="tbl-seeds" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Tbl Suppliers" Path="tbl-suppliers" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Tbl Trays" Path="tbl-trays" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+        </RadzenPanelMenuItem>
+        <RadzenPanelMenuItem Text="Tbl Tray Types" Path="tbl-tray-types" Visible="@Security.IsInRole(new string[]{"Authenticated"})">
+        </RadzenPanelMenuItem>
+      </ChildContent>
+    </RadzenPanelMenu>
+  </ChildContent>
+</RadzenSidebar>
+<RadzenFooter>
+  <ChildContent>
+    <RadzenLabel Text="growing, Copyright Ⓒ 2020">
+    </RadzenLabel>
+  </ChildContent>
+</RadzenFooter>

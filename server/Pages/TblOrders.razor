@@ -1,0 +1,47 @@
+﻿@page "/tbl-orders"
+@layout MainLayout
+@inherits Growing.Pages.TblOrdersComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using Growing.Models.Growing
+@using Microsoft.AspNetCore.Identity
+@using Growing.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <RadzenHeading Size="H1" Text="Tbl Orders">
+    </RadzenHeading>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
+        </RadzenButton>
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblOrdersResult" TItem="Growing.Models.Growing.TblOrder" RowSelect="@Grid0RowSelect">
+          <Columns>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblOrder" Property="CustomerId" SortProperty="TblCustomer.CustomerContactName" FilterProperty="TblCustomer.CustomerContactName" Title="Tbl Customer">
+              <Template Context="data">
+              @(data.TblCustomer?.CustomerContactName)
+              </Template>
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblOrder" Property="OrderDelivered" Title="Order Delivered">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblOrder" Property="OrderDeliveryDate" FormatString="{0:MM/dd/yyyy}" Title="Order Delivery Date">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblOrder" Property="OrderId" Title="Order Id">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblOrder" Property="OrderSequence" Title="Order Sequence">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Growing.Models.Growing.TblOrder" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
+              <Template Context="growingModelsGrowingTblOrder">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, growingModelsGrowingTblOrder))" @onclick:stopPropagation="true">
+                </RadzenButton>
+              </Template>
+            </RadzenGridColumn>
+          </Columns>
+        </RadzenGrid>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>
