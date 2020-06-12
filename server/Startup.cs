@@ -19,11 +19,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Growing.Data;
-using Growing.Models;
-using Growing.Authentication;
+using Localhost.Data;
+using Localhost.Models;
+using Localhost.Authentication;
 using Radzen;
-namespace Growing
+namespace Localhost
 {
     public partial class Startup
     {
@@ -55,7 +55,6 @@ namespace Growing
             });
 
             services.AddHttpClient();
-
             services.AddAuthentication();
             services.AddAuthorization();
             services.AddDbContext<ApplicationIdentityDbContext>(options =>
@@ -71,7 +70,7 @@ namespace Growing
             services.AddScoped<SecurityService>();
             services.AddScoped<GrowingService>();
 
-            services.AddDbContext<Growing.Data.GrowingContext>(options =>
+            services.AddDbContext<Localhost.Data.GrowingContext>(options =>
             {
               options.UseMySql(Configuration.GetConnectionString("growingConnection"));
             });
@@ -82,7 +81,7 @@ namespace Growing
             {
                 o.MaximumReceiveMessageSize = 10 * 1024 * 1024;
             });
-          
+
             services.AddScoped<DialogService>();
             services.AddScoped<NotificationService>();
             OnConfigureServices(services);
@@ -108,7 +107,7 @@ namespace Growing
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-  
+
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -127,5 +126,6 @@ namespace Growing
             OnConfigure(app, env);
         }
     }
+
 
 }

@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Layouts
+namespace Localhost.Layouts
 {
     public partial class MainLayoutComponent : LayoutComponentBase
     {
@@ -33,6 +33,7 @@ namespace Growing.Layouts
         protected RadzenBody body0;
 
         protected RadzenSidebar sidebar0;
+
 
         protected async System.Threading.Tasks.Task SidebarToggle0Click(dynamic args)
         {

@@ -27,9 +27,9 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Tbl Customer",
-                              "component": "CustomerId",
-                              "name": "CustomerIdLabel",
+                              "text": "Order Sequence",
+                              "component": "OrderSequence",
+                              "name": "OrderSequenceLabel",
                               "style": {
                                 "width": "100%"
                               }
@@ -41,52 +41,23 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getTblCustomersForCustomerIdResult}",
-                              "textProperty": "CustomerContactName",
-                              "valueProperty": "CustomerId",
-                              "placeholder": "Choose TblCustomer",
-                              "valueType": "int?",
-                              "type": "dropdown-datagrid",
-                              "name": "CustomerId",
+                              "valueType": "int",
+                              "type": "numeric",
+                              "name": "OrderSequence",
                               "style": {
+                                "display": "block",
                                 "width": "100%"
                               },
-                              "value": "${tblorder.CustomerId}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
+                              "value": "${tblorder.OrderSequence}"
+                            },
                             {
-                              "type": "label",
-                              "text": "Order Delivered",
-                              "component": "OrderDelivered",
-                              "name": "OrderDeliveredLabel",
+                              "type": "required-validator",
+                              "name": "OrderSequenceRequiredValidator",
+                              "component": "OrderSequence",
+                              "text": "OrderSequence is required",
                               "style": {
-                                "width": "100%"
+                                "position": "absolute"
                               }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "bool",
-                              "type": "checkbox",
-                              "name": "OrderDelivered",
-                              "value": "${tblorder.OrderDelivered}"
                             }
                           ]
                         }
@@ -153,9 +124,9 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Order Sequence",
-                              "component": "OrderSequence",
-                              "name": "OrderSequenceLabel",
+                              "text": "Order Delivered",
+                              "component": "OrderDelivered",
+                              "name": "OrderDeliveredLabel",
                               "style": {
                                 "width": "100%"
                               }
@@ -167,23 +138,52 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "valueType": "int",
-                              "type": "numeric",
-                              "name": "OrderSequence",
+                              "valueType": "bool",
+                              "type": "checkbox",
+                              "name": "OrderDelivered",
+                              "value": "${tblorder.OrderDelivered}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tbl Customer",
+                              "component": "CustomerId",
+                              "name": "CustomerIdLabel",
                               "style": {
-                                "display": "block",
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getTblCustomersForCustomerIdResult}",
+                              "textProperty": "CustomerName",
+                              "valueProperty": "CustomerId",
+                              "placeholder": "Choose TblCustomer",
+                              "valueType": "int?",
+                              "type": "dropdown-datagrid",
+                              "name": "CustomerId",
+                              "style": {
                                 "width": "100%"
                               },
-                              "value": "${tblorder.OrderSequence}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "OrderSequenceRequiredValidator",
-                              "component": "OrderSequence",
-                              "text": "OrderSequence is required",
-                              "style": {
-                                "position": "absolute"
-                              }
+                              "value": "${tblorder.CustomerId}"
                             }
                           ]
                         }
@@ -252,7 +252,7 @@
                       }
                     ]
                   },
-                  "itemType": "Growing.Models.Growing.TblOrder",
+                  "itemType": "Localhost.Models.Growing.TblOrder",
                   "data": "${tblorder}",
                   "visible": "${tblorder != null}"
                 }
@@ -278,7 +278,7 @@
             "name": "tblorder",
             "type": "set",
             "value": "${result}",
-            "valueType": "Growing.Models.Growing.TblOrder"
+            "valueType": "Localhost.Models.Growing.TblOrder"
           }
         ],
         "error": [],
@@ -292,7 +292,7 @@
             "name": "getTblCustomersForCustomerIdResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblCustomer>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblCustomer>"
           }
         ],
         "type": "invoke"

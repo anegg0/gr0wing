@@ -9,8 +9,6 @@
               "class": "col-md-6 d-flex align-items-center",
               "components": [
                 {
-                  "name": "sidebar-toggle0",
-                  "type": "sidebar-toggle",
                   "events": {
                     "click": [
                       {
@@ -22,11 +20,20 @@
                         "type": "execute"
                       }
                     ]
-                  }
+                  },
+                  "name": "sidebar-toggle0",
+                  "type": "sidebar-toggle"
                 },
                 {
                   "name": "label0",
-                  "text": "growing",
+                  "style": {
+                    "color": "RGBA(255, 165, 0, 1)",
+                    "fontFamily": "arial,helvetica,sans-serif",
+                    "fontSize": "30px",
+                    "fontStyle": "normal",
+                    "fontWeight": "bolder"
+                  },
+                  "text": "gr0wing.io",
                   "type": "label"
                 }
               ],
@@ -35,21 +42,21 @@
             },
             {
               "class": "col-md-6 text-lg-right",
-              "name": "rightCol",
-              "type": "col",
               "components": [
                 {
-                  "type": "profilemenu",
                   "name": "profilemenu0",
-                  "visible": "${Security.IsAuthenticated()}",
                   "template": [
                     {
                       "email": "${Security.User?.Name}",
                       "type": "gravatar"
                     }
-                  ]
+                  ],
+                  "type": "profilemenu",
+                  "visible": "${Security.IsAuthenticated()}"
                 }
-              ]
+              ],
+              "name": "rightCol",
+              "type": "col"
             }
           ],
           "name": "headerRow",
@@ -72,6 +79,41 @@
     {
       "components": [
         {
+          "items": [
+            {
+              "items": [],
+              "path": "tbl-trays",
+              "text": "Production"
+            },
+            {
+              "path": "tbl-tray-types",
+              "text": "Tray Types"
+            },
+            {
+              "path": "tbl-seeds",
+              "text": "Seeds"
+            },
+            {
+              "path": "tbl-orders",
+              "text": "Orders"
+            },
+            {
+              "path": "tbl-seasons",
+              "text": "Seasons"
+            },
+            {
+              "path": "add-tbl-customer",
+              "text": "Customers"
+            },
+            {
+              "path": "tbl-suppliers",
+              "text": "Suppliers"
+            },
+            {
+              "path": "application-users",
+              "text": "Users"
+            }
+          ],
           "name": "panelmenu0",
           "style": {
             "height": "100%"
@@ -86,7 +128,7 @@
       "components": [
         {
           "name": "footerText",
-          "text": "growing, Copyright Ⓒ 2020",
+          "text": "gr0wing.io, Copyright Ⓒ 2020",
           "type": "label"
         }
       ],

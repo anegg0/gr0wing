@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Growing.Controllers
+namespace Localhost.Controllers
 {
     public partial class ReportController : Controller
     {

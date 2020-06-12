@@ -1,12 +1,12 @@
 ﻿@page "/edit-tbl-tray-type/{TrayTypeId}"
 @layout MainLayout
-@inherits Growing.Pages.EditTblTrayTypeComponent
+@inherits Localhost.Pages.EditTblTrayTypeComponent
 
 @using Radzen
 @using Radzen.Blazor
-@using Growing.Models.Growing
+@using Localhost.Models.Growing
 @using Microsoft.AspNetCore.Identity
-@using Growing.Models
+@using Localhost.Models
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
@@ -14,8 +14,20 @@
   <ChildContent>
     <div class="row">
       <div class="col-md-12">
-        <RadzenTemplateForm TItem="Growing.Models.Growing.TblTrayType" Data="@tbltraytype" Visible="@(tbltraytype != null)" Submit="@Form0Submit">
+        <RadzenTemplateForm TItem="Localhost.Models.Growing.TblTrayType" Data="@tbltraytype" Visible="@(tbltraytype != null)" Submit="@Form0Submit">
           <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tray Name" Component="TrayName" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayName)" Name="TrayName">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="TrayName" Text="TrayName is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
                 <RadzenLabel Text="Tray Handle" Component="TrayHandle" style="width: 100%">
@@ -25,18 +37,6 @@
                 <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayHandle)" Name="TrayHandle">
                 </RadzenTextBox>
                 <RadzenRequiredValidator Component="TrayHandle" Text="TrayHandle is required" style="position: absolute">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Tray Height" Component="TrayHeight" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayHeight)" Name="TrayHeight">
-                </RadzenTextBox>
-                <RadzenRequiredValidator Component="TrayHeight" Text="TrayHeight is required" style="position: absolute">
                 </RadzenRequiredValidator>
               </div>
             </div>
@@ -54,18 +54,6 @@
             </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Tray Name" Component="TrayName" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayName)" Name="TrayName">
-                </RadzenTextBox>
-                <RadzenRequiredValidator Component="TrayName" Text="TrayName is required" style="position: absolute">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
                 <RadzenLabel Text="Tray Width" Component="TrayWidth" style="width: 100%">
                 </RadzenLabel>
               </div>
@@ -73,6 +61,18 @@
                 <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayWidth)" Name="TrayWidth">
                 </RadzenTextBox>
                 <RadzenRequiredValidator Component="TrayWidth" Text="TrayWidth is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tray Height" Component="TrayHeight" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tbltraytype.TrayHeight)" Name="TrayHeight">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="TrayHeight" Text="TrayHeight is required" style="position: absolute">
                 </RadzenRequiredValidator>
               </div>
             </div>

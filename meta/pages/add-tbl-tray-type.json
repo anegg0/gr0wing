@@ -27,6 +27,55 @@
                           "components": [
                             {
                               "type": "label",
+                              "text": "Tray Name",
+                              "component": "TrayName",
+                              "name": "TrayNameLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "TrayName",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tbltraytype.TrayName}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "TrayNameRequiredValidator",
+                              "component": "TrayName",
+                              "text": "TrayName is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
                               "text": "Tray Handle",
                               "component": "TrayHandle",
                               "name": "TrayHandleLabel",
@@ -56,55 +105,6 @@
                               "name": "TrayHandleRequiredValidator",
                               "component": "TrayHandle",
                               "text": "TrayHandle is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Tray Height",
-                              "component": "TrayHeight",
-                              "name": "TrayHeightLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 11,
-                              "type": "textbox",
-                              "name": "TrayHeight",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tbltraytype.TrayHeight}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "TrayHeightRequiredValidator",
-                              "component": "TrayHeight",
-                              "text": "TrayHeight is required",
                               "style": {
                                 "position": "absolute"
                               }
@@ -174,55 +174,6 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Tray Name",
-                              "component": "TrayName",
-                              "name": "TrayNameLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 50,
-                              "type": "textbox",
-                              "name": "TrayName",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tbltraytype.TrayName}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "TrayNameRequiredValidator",
-                              "component": "TrayName",
-                              "text": "TrayName is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
                               "text": "Tray Width",
                               "component": "TrayWidth",
                               "name": "TrayWidthLabel",
@@ -252,6 +203,55 @@
                               "name": "TrayWidthRequiredValidator",
                               "component": "TrayWidth",
                               "text": "TrayWidth is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tray Height",
+                              "component": "TrayHeight",
+                              "name": "TrayHeightLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 11,
+                              "type": "textbox",
+                              "name": "TrayHeight",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tbltraytype.TrayHeight}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "TrayHeightRequiredValidator",
+                              "component": "TrayHeight",
+                              "text": "TrayHeight is required",
                               "style": {
                                 "position": "absolute"
                               }
@@ -321,7 +321,7 @@
                   },
                   "data": "${tbltraytype}",
                   "visible": "${tbltraytype != null}",
-                  "itemType": "Growing.Models.Growing.TblTrayType"
+                  "itemType": "Localhost.Models.Growing.TblTrayType"
                 }
               ]
             }
@@ -335,8 +335,8 @@
       {
         "name": "tbltraytype",
         "type": "set",
-        "value": "new Growing.Models.Growing.TblTrayType(){}",
-        "valueType": "Growing.Models.Growing.TblTrayType"
+        "value": "new Localhost.Models.Growing.TblTrayType(){}",
+        "valueType": "Localhost.Models.Growing.TblTrayType"
       }
     ]
   },

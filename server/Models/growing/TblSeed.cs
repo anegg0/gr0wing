@@ -3,11 +3,46 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Growing.Models.Growing
+namespace Localhost.Models.Growing
 {
   [Table("tblSeed")]
   public partial class TblSeed
   {
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public int SeedId
+    {
+      get;
+      set;
+    }
+
+    public ICollection<TblTray> TblTrays { get; set; }
+    public string SeedName
+    {
+      get;
+      set;
+    }
+    public string SeedHandle
+    {
+      get;
+      set;
+    }
+    public string SeedLifetime
+    {
+      get;
+      set;
+    }
+    public string SeedingRate
+    {
+      get;
+      set;
+    }
+    public int SeasonId
+    {
+      get;
+      set;
+    }
+    public TblSeason TblSeason { get; set; }
     public string CurrentDTM
     {
       get;
@@ -29,41 +64,6 @@ namespace Growing.Models.Growing
       set;
     }
     public string DTM4
-    {
-      get;
-      set;
-    }
-    public int SeasonId
-    {
-      get;
-      set;
-    }
-    public TblSeason TblSeason { get; set; }
-    public string SeedHandle
-    {
-      get;
-      set;
-    }
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int SeedId
-    {
-      get;
-      set;
-    }
-
-    public ICollection<TblTray> TblTrays { get; set; }
-    public string SeedingRate
-    {
-      get;
-      set;
-    }
-    public string SeedLifetime
-    {
-      get;
-      set;
-    }
-    public string SeedName
     {
       get;
       set;

@@ -74,14 +74,6 @@
                   "title": "",
                   "columns": [
                     {
-                      "property": "CustomerContactName",
-                      "title": "Customer Contact Name"
-                    },
-                    {
-                      "property": "CustomerCountry",
-                      "title": "Customer Country"
-                    },
-                    {
                       "property": "CustomerId",
                       "title": "Customer Id"
                     },
@@ -90,16 +82,8 @@
                       "title": "Customer Name"
                     },
                     {
-                      "property": "CustomerPhoneNumber1",
-                      "title": "Customer Phone Number 1"
-                    },
-                    {
-                      "property": "CustomerPhoneNumber2",
-                      "title": "Customer Phone Number 2"
-                    },
-                    {
-                      "property": "CustomerState",
-                      "title": "Customer State"
+                      "property": "CustomerContactName",
+                      "title": "Customer Contact Name"
                     },
                     {
                       "property": "CustomerStreetAddress1",
@@ -112,6 +96,22 @@
                     {
                       "property": "CustomerZipcode",
                       "title": "Customer Zipcode"
+                    },
+                    {
+                      "property": "CustomerState",
+                      "title": "Customer State"
+                    },
+                    {
+                      "property": "CustomerCountry",
+                      "title": "Customer Country"
+                    },
+                    {
+                      "property": "CustomerPhoneNumber1",
+                      "title": "Customer Phone Number 1"
+                    },
+                    {
+                      "property": "CustomerPhoneNumber2",
+                      "title": "Customer Phone Number 2"
                     },
                     {
                       "filterable": false,
@@ -166,7 +166,7 @@
                     }
                   ],
                   "type": "grid",
-                  "itemType": "Growing.Models.Growing.TblCustomer"
+                  "itemType": "Localhost.Models.Growing.TblCustomer"
                 }
               ]
             }
@@ -185,7 +185,7 @@
             "name": "getTblCustomersResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblCustomer>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblCustomer>"
           }
         ],
         "type": "invoke"

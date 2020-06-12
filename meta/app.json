@@ -9,7 +9,7 @@
     "Main"
   ],
   "logo": "",
-  "name": "growing",
+  "name": "localhost",
   "navigation": [
     "Tbl Customers",
     "Tbl Orders",
@@ -41,15 +41,15 @@
     "Tbl Tray Types",
     "Add Tbl Tray Type",
     "Edit Tbl Tray Type",
-    "Login",
     "Application Users",
     "Application Roles",
     "Register Application User",
     "Add Application Role",
-    "Edit Application User",
     "Add Application User",
-    "Profile",
-    "Unauthorized"
+    "Login",
+    "Edit Application User",
+    "Unauthorized",
+    "Profile"
   ],
   "security": {
     "autoGeneratePages": true,

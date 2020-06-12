@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 using Microsoft.AspNetCore.Identity;
 
-namespace Growing.Models
+namespace Localhost.Models
 {
     public partial class ApplicationUser : IdentityUser
     {

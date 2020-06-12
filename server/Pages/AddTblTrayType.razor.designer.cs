@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class AddTblTrayTypeComponent : ComponentBase
     {
@@ -38,8 +38,8 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        Growing.Models.Growing.TblTrayType _tbltraytype;
-        protected Growing.Models.Growing.TblTrayType tbltraytype
+        Localhost.Models.Growing.TblTrayType _tbltraytype;
+        protected Localhost.Models.Growing.TblTrayType tbltraytype
         {
             get
             {
@@ -68,10 +68,10 @@ namespace Growing.Pages
         }
         protected async System.Threading.Tasks.Task Load()
         {
-            tbltraytype = new Growing.Models.Growing.TblTrayType(){};
+            tbltraytype = new Localhost.Models.Growing.TblTrayType(){};
         }
 
-        protected async System.Threading.Tasks.Task Form0Submit(Growing.Models.Growing.TblTrayType args)
+        protected async System.Threading.Tasks.Task Form0Submit(Localhost.Models.Growing.TblTrayType args)
         {
             try
             {

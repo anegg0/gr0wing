@@ -2,27 +2,11 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Growing.Models.Growing
+namespace Localhost.Models.Growing
 {
   [Table("tblOrder")]
   public partial class TblOrder
   {
-    public int? CustomerId
-    {
-      get;
-      set;
-    }
-    public TblCustomer TblCustomer { get; set; }
-    public bool OrderDelivered
-    {
-      get;
-      set;
-    }
-    public DateTime OrderDeliveryDate
-    {
-      get;
-      set;
-    }
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int OrderId
@@ -35,5 +19,21 @@ namespace Growing.Models.Growing
       get;
       set;
     }
+    public DateTime OrderDeliveryDate
+    {
+      get;
+      set;
+    }
+    public bool OrderDelivered
+    {
+      get;
+      set;
+    }
+    public int? CustomerId
+    {
+      get;
+      set;
+    }
+    public TblCustomer TblCustomer { get; set; }
   }
 }

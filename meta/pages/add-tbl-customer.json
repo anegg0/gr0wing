@@ -27,94 +27,6 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Customer Contact Name",
-                              "component": "CustomerContactName",
-                              "name": "CustomerContactNameLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 40,
-                              "type": "textbox",
-                              "name": "CustomerContactName",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tblcustomer.CustomerContactName}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "CustomerContactNameRequiredValidator",
-                              "component": "CustomerContactName",
-                              "text": "CustomerContactName is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Customer Country",
-                              "component": "CustomerCountry",
-                              "name": "CustomerCountryLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 20,
-                              "type": "textbox",
-                              "name": "CustomerCountry",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${tblcustomer.CustomerCountry}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
                               "text": "Customer Name",
                               "component": "CustomerName",
                               "name": "CustomerNameLabel",
@@ -164,9 +76,9 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Customer Phone Number 1",
-                              "component": "CustomerPhoneNumber1",
-                              "name": "CustomerPhoneNumber1Label",
+                              "text": "Customer Contact Name",
+                              "component": "CustomerContactName",
+                              "name": "CustomerContactNameLabel",
                               "style": {
                                 "width": "100%"
                               }
@@ -179,91 +91,23 @@
                           "components": [
                             {
                               "valueType": "string",
-                              "maxLength": 20,
+                              "maxLength": 40,
                               "type": "textbox",
-                              "name": "CustomerPhoneNumber1",
+                              "name": "CustomerContactName",
                               "style": {
+                                "display": "block",
                                 "width": "100%"
                               },
-                              "value": "${tblcustomer.CustomerPhoneNumber1}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
+                              "value": "${tblcustomer.CustomerContactName}"
+                            },
                             {
-                              "type": "label",
-                              "text": "Customer Phone Number 2",
-                              "component": "CustomerPhoneNumber2",
-                              "name": "CustomerPhoneNumber2Label",
+                              "type": "required-validator",
+                              "name": "CustomerContactNameRequiredValidator",
+                              "component": "CustomerContactName",
+                              "text": "CustomerContactName is required",
                               "style": {
-                                "width": "100%"
+                                "position": "absolute"
                               }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 20,
-                              "type": "textbox",
-                              "name": "CustomerPhoneNumber2",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${tblcustomer.CustomerPhoneNumber2}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Customer State",
-                              "component": "CustomerState",
-                              "name": "CustomerStateLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 20,
-                              "type": "textbox",
-                              "name": "CustomerState",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${tblcustomer.CustomerState}"
                             }
                           ]
                         }
@@ -388,6 +232,162 @@
                     },
                     {
                       "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Customer State",
+                              "component": "CustomerState",
+                              "name": "CustomerStateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "CustomerState",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblcustomer.CustomerState}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Customer Country",
+                              "component": "CustomerCountry",
+                              "name": "CustomerCountryLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "CustomerCountry",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblcustomer.CustomerCountry}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Customer Phone Number 1",
+                              "component": "CustomerPhoneNumber1",
+                              "name": "CustomerPhoneNumber1Label",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "CustomerPhoneNumber1",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblcustomer.CustomerPhoneNumber1}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Customer Phone Number 2",
+                              "component": "CustomerPhoneNumber2",
+                              "name": "CustomerPhoneNumber2Label",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 20,
+                              "type": "textbox",
+                              "name": "CustomerPhoneNumber2",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tblcustomer.CustomerPhoneNumber2}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
                       "components": [
                         {
                           "type": "col",
@@ -447,7 +447,7 @@
                   },
                   "data": "${tblcustomer}",
                   "visible": "${tblcustomer != null}",
-                  "itemType": "Growing.Models.Growing.TblCustomer"
+                  "itemType": "Localhost.Models.Growing.TblCustomer"
                 }
               ]
             }
@@ -461,8 +461,8 @@
       {
         "name": "tblcustomer",
         "type": "set",
-        "value": "new Growing.Models.Growing.TblCustomer(){}",
-        "valueType": "Growing.Models.Growing.TblCustomer"
+        "value": "new Localhost.Models.Growing.TblCustomer(){}",
+        "valueType": "Localhost.Models.Growing.TblCustomer"
       }
     ]
   },

@@ -4,10 +4,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using Growing.Models;
-using Growing.Data;
+using Localhost.Models;
+using Localhost.Data;
 
-namespace Growing.Authentication
+namespace Localhost.Authentication
 {
     public partial class ApplicationPrincipalFactory : UserClaimsPrincipalFactory<ApplicationUser, IdentityRole>
     {

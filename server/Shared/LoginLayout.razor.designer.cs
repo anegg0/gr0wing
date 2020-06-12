@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Layouts
+namespace Localhost.Layouts
 {
     public partial class LoginLayoutComponent : LayoutComponentBase
     {
@@ -31,5 +31,6 @@ namespace Growing.Layouts
 
 
         protected RadzenBody body0;
+
     }
 }

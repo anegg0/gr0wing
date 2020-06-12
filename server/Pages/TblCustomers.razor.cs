@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Radzen;
 using Radzen.Blazor;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class TblCustomersComponent
     {

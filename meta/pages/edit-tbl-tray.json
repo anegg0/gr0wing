@@ -27,9 +27,9 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Tbl Customer",
-                              "component": "CustomerId",
-                              "name": "CustomerIdLabel",
+                              "text": "Tbl Tray Type",
+                              "component": "TrayTypeId",
+                              "name": "TrayTypeIdLabel",
                               "style": {
                                 "width": "100%"
                               }
@@ -41,56 +41,17 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "data": "${getTblCustomersForCustomerIdResult}",
-                              "textProperty": "CustomerContactName",
-                              "valueProperty": "CustomerId",
-                              "placeholder": "Choose TblCustomer",
+                              "data": "${getTblTrayTypesForTrayTypeIdResult}",
+                              "textProperty": "TrayName",
+                              "valueProperty": "TrayTypeId",
+                              "placeholder": "Choose TblTrayType",
                               "valueType": "int?",
                               "type": "dropdown-datagrid",
-                              "name": "CustomerId",
+                              "name": "TrayTypeId",
                               "style": {
                                 "width": "100%"
                               },
-                              "value": "${tbltray.CustomerId}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Expiry Date",
-                              "component": "ExpiryDate",
-                              "name": "ExpiryDateLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "DateTime?",
-                              "dateFormat": "MM/dd/yyyy",
-                              "type": "datepicker",
-                              "name": "ExpiryDate",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${tbltray.ExpiryDate}"
+                              "value": "${tbltray.TrayTypeId}"
                             }
                           ]
                         }
@@ -123,7 +84,7 @@
                           "components": [
                             {
                               "data": "${getTblSeedsForSeedIdResult}",
-                              "textProperty": "CurrentDTM",
+                              "textProperty": "SeedName",
                               "valueProperty": "SeedId",
                               "placeholder": "Choose TblSeed",
                               "valueType": "int?",
@@ -150,9 +111,9 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Status",
-                              "component": "Status",
-                              "name": "StatusLabel",
+                              "text": "Tbl Customer",
+                              "component": "CustomerId",
+                              "name": "CustomerIdLabel",
                               "style": {
                                 "width": "100%"
                               }
@@ -164,14 +125,17 @@
                           "class": "col-md-9",
                           "components": [
                             {
-                              "valueType": "string",
-                              "maxLength": 50,
-                              "type": "textbox",
-                              "name": "Status",
+                              "data": "${getTblCustomersForCustomerIdResult}",
+                              "textProperty": "CustomerName",
+                              "valueProperty": "CustomerId",
+                              "placeholder": "Choose TblCustomer",
+                              "valueType": "int?",
+                              "type": "dropdown-datagrid",
+                              "name": "CustomerId",
                               "style": {
                                 "width": "100%"
                               },
-                              "value": "${tbltray.Status}"
+                              "value": "${tbltray.CustomerId}"
                             }
                           ]
                         }
@@ -286,48 +250,6 @@
                           "components": [
                             {
                               "type": "label",
-                              "text": "Tbl Tray Type",
-                              "component": "TrayTypeId",
-                              "name": "TrayTypeIdLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "data": "${getTblTrayTypesForTrayTypeIdResult}",
-                              "textProperty": "TrayHandle",
-                              "valueProperty": "TrayTypeId",
-                              "placeholder": "Choose TblTrayType",
-                              "valueType": "int?",
-                              "type": "dropdown-datagrid",
-                              "name": "TrayTypeId",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${tbltray.TrayTypeId}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
                               "text": "Tray Update Date",
                               "component": "TrayUpdateDate",
                               "name": "TrayUpdateDateLabel",
@@ -360,6 +282,84 @@
                               "style": {
                                 "position": "absolute"
                               }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Expiry Date",
+                              "component": "ExpiryDate",
+                              "name": "ExpiryDateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "DateTime?",
+                              "dateFormat": "MM/dd/yyyy",
+                              "type": "datepicker",
+                              "name": "ExpiryDate",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tbltray.ExpiryDate}"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Status",
+                              "component": "Status",
+                              "name": "StatusLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "Status",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "value": "${tbltray.Status}"
                             }
                           ]
                         }
@@ -428,7 +428,7 @@
                       }
                     ]
                   },
-                  "itemType": "Growing.Models.Growing.TblTray",
+                  "itemType": "Localhost.Models.Growing.TblTray",
                   "data": "${tbltray}",
                   "visible": "${tbltray != null}"
                 }
@@ -454,21 +454,21 @@
             "name": "tbltray",
             "type": "set",
             "value": "${result}",
-            "valueType": "Growing.Models.Growing.TblTray"
+            "valueType": "Localhost.Models.Growing.TblTray"
           }
         ],
         "error": [],
         "type": "invoke"
       },
       {
-        "name": "growing.getTblCustomers",
+        "name": "growing.getTblTrayTypes",
         "parameters": [],
         "then": [
           {
-            "name": "getTblCustomersForCustomerIdResult",
+            "name": "getTblTrayTypesForTrayTypeIdResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblCustomer>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblTrayType>"
           }
         ],
         "type": "invoke"
@@ -481,20 +481,20 @@
             "name": "getTblSeedsForSeedIdResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblSeed>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblSeed>"
           }
         ],
         "type": "invoke"
       },
       {
-        "name": "growing.getTblTrayTypes",
+        "name": "growing.getTblCustomers",
         "parameters": [],
         "then": [
           {
-            "name": "getTblTrayTypesForTrayTypeIdResult",
+            "name": "getTblCustomersForCustomerIdResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblTrayType>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblCustomer>"
           }
         ],
         "type": "invoke"

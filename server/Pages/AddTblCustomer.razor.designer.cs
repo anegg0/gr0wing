@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class AddTblCustomerComponent : ComponentBase
     {
@@ -38,8 +38,8 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        Growing.Models.Growing.TblCustomer _tblcustomer;
-        protected Growing.Models.Growing.TblCustomer tblcustomer
+        Localhost.Models.Growing.TblCustomer _tblcustomer;
+        protected Localhost.Models.Growing.TblCustomer tblcustomer
         {
             get
             {
@@ -68,10 +68,10 @@ namespace Growing.Pages
         }
         protected async System.Threading.Tasks.Task Load()
         {
-            tblcustomer = new Growing.Models.Growing.TblCustomer(){};
+            tblcustomer = new Localhost.Models.Growing.TblCustomer(){};
         }
 
-        protected async System.Threading.Tasks.Task Form0Submit(Growing.Models.Growing.TblCustomer args)
+        protected async System.Threading.Tasks.Task Form0Submit(Localhost.Models.Growing.TblCustomer args)
         {
             try
             {

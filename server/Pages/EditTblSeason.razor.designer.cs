@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class EditTblSeasonComponent : ComponentBase
     {
@@ -41,8 +41,8 @@ namespace Growing.Pages
         [Parameter]
         public dynamic SeasonId { get; set; }
 
-        Growing.Models.Growing.TblSeason _tblseason;
-        protected Growing.Models.Growing.TblSeason tblseason
+        Localhost.Models.Growing.TblSeason _tblseason;
+        protected Localhost.Models.Growing.TblSeason tblseason
         {
             get
             {
@@ -75,7 +75,7 @@ namespace Growing.Pages
             tblseason = growingGetTblSeasonBySeasonIdResult;
         }
 
-        protected async System.Threading.Tasks.Task Form0Submit(Growing.Models.Growing.TblSeason args)
+        protected async System.Threading.Tasks.Task Form0Submit(Localhost.Models.Growing.TblSeason args)
         {
             try
             {

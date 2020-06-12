@@ -2,23 +2,21 @@
   "access": "Everybody",
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Login"
+          "text": "Login",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
+                  "allowRegister": true,
+                  "allowResetPassword": false,
                   "events": {
                     "login": [],
                     "register": [
@@ -28,32 +26,35 @@
                       }
                     ]
                   },
-                  "allowResetPassword": false,
                   "name": "login0",
                   "type": "login"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
     "load": [
       {
-        "type": "execute",
-        "code": "var error = System.Web.HttpUtility.ParseQueryString(new Uri(UriHelper.ToAbsoluteUri(UriHelper.Uri).ToString()).Query).Get(\"error\");"
+        "code": "var error = System.Web.HttpUtility.ParseQueryString(new Uri(UriHelper.ToAbsoluteUri(UriHelper.Uri).ToString()).Query).Get(\"error\");",
+        "type": "execute"
       },
       {
+        "condition": "!string.IsNullOrEmpty(error)",
         "detail": "${error}",
         "severity": "error",
         "summary": "Error",
-        "condition": "!string.IsNullOrEmpty(error)",
         "type": "notify"
       }
     ]
   },
-  "name": "Login",
-  "layout": "Login"
+  "layout": "Login",
+  "name": "Login"
 }

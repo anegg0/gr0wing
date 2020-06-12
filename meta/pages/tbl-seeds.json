@@ -1,35 +1,26 @@
 {
+  "access": [
+    "Authenticated"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Tbl Seeds"
+          "text": "Seeds",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "icon": "add_circle_outline",
-                  "name": "button0",
-                  "style": {
-                    "marginBottom": "10px"
-                  },
-                  "text": "Add",
-                  "type": "button",
                   "events": {
                     "click": [
                       {
                         "path": "add-tbl-seed",
-                        "type": "popup",
                         "then": [
                           {
                             "code": "grid0.Reload();",
@@ -39,40 +30,51 @@
                             "code": "await InvokeAsync(() => { StateHasChanged(); });",
                             "type": "execute"
                           }
-                        ]
-                      }
-                    ]
-                  }
-                },
-                {
-                  "name": "grid0",
-                  "allowFiltering": true,
-                  "allowPaging": true,
-                  "allowSorting": true,
-                  "data": "${getTblSeedsResult}",
-                  "events": {
-                    "loadData": [],
-                    "rowSelect": [
-                      {
-                        "parameters": [
-                          {
-                            "name": "SeedId",
-                            "value": "${event.SeedId}"
-                          }
                         ],
-                        "path": "edit-tbl-seed",
-                        "type": "popup",
-                        "then": [
-                          {
-                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
-                            "type": "execute"
-                          }
-                        ]
+                        "type": "popup"
                       }
                     ]
                   },
-                  "title": "",
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button"
+                },
+                {
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
                   "columns": [
+                    {
+                      "property": "SeedId",
+                      "title": "Seed Id"
+                    },
+                    {
+                      "property": "SeedName",
+                      "title": "Seed Name"
+                    },
+                    {
+                      "property": "SeedHandle",
+                      "title": "Seed Handle"
+                    },
+                    {
+                      "property": "SeedLifetime",
+                      "title": "Seed Lifetime"
+                    },
+                    {
+                      "property": "SeedingRate",
+                      "title": "Seeding Rate"
+                    },
+                    {
+                      "filterProperty": "TblSeason.SeasonName",
+                      "property": "SeasonId",
+                      "sortProperty": "TblSeason.SeasonName",
+                      "template": "${data.TblSeason?.SeasonName}",
+                      "title": "Tbl Season"
+                    },
                     {
                       "property": "CurrentDTM",
                       "title": "Current DTM"
@@ -94,37 +96,8 @@
                       "title": "DTM 4"
                     },
                     {
-                      "property": "SeasonId",
-                      "sortProperty": "TblSeason.SeasonName",
-                      "filterProperty": "TblSeason.SeasonName",
-                      "template": "${data.TblSeason?.SeasonName}",
-                      "title": "Tbl Season"
-                    },
-                    {
-                      "property": "SeedHandle",
-                      "title": "Seed Handle"
-                    },
-                    {
-                      "property": "SeedId",
-                      "title": "Seed Id"
-                    },
-                    {
-                      "property": "SeedingRate",
-                      "title": "Seeding Rate"
-                    },
-                    {
-                      "property": "SeedLifetime",
-                      "title": "Seed Lifetime"
-                    },
-                    {
-                      "property": "SeedName",
-                      "title": "Seed Name"
-                    },
-                    {
                       "filterable": false,
                       "sortable": false,
-                      "width": "70px",
-                      "textAlign": "center",
                       "template": [
                         {
                           "attributes": [
@@ -134,11 +107,6 @@
                             }
                           ],
                           "buttonStyle": "danger",
-                          "icon": "close",
-                          "name": "gridDeleteButton",
-                          "text": "",
-                          "size": "sm",
-                          "type": "button",
                           "events": {
                             "click": [
                               {
@@ -167,19 +135,54 @@
                                 "type": "invoke"
                               }
                             ]
-                          }
+                          },
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "size": "sm",
+                          "text": "",
+                          "type": "button"
                         }
-                      ]
+                      ],
+                      "textAlign": "center",
+                      "width": "70px"
                     }
                   ],
-                  "type": "grid",
-                  "itemType": "Growing.Models.Growing.TblSeed"
+                  "data": "${getTblSeedsResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "SeedId",
+                            "value": "${event.SeedId}"
+                          }
+                        ],
+                        "path": "edit-tbl-seed",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ],
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "itemType": "Localhost.Models.Growing.TblSeed",
+                  "name": "grid0",
+                  "title": "",
+                  "type": "grid"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -192,16 +195,13 @@
             "name": "getTblSeedsResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblSeed>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblSeed>"
           }
         ],
         "type": "invoke"
       }
     ]
   },
-  "name": "Tbl Seeds",
   "layout": "Main",
-  "access": [
-    "Authenticated"
-  ]
+  "name": "Tbl Seeds"
 }

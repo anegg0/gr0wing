@@ -501,5 +501,23 @@ window.Radzen = {
         window.addEventListener("resize", ref.resizeHandler);
 
         return { width: rect.width, height: rect.height };
+    },
+    destroyScheduler: function (ref) {
+      if (ref.resizeHandler) {
+          window.removeEventListener("resize", ref.resizeHandler);
+          delete ref.resizeHandler;
+      }
+    },
+    createScheduler: function (ref, instance) {
+      ref.resizeHandler = function () {
+        var rect = ref.getBoundingClientRect();
+
+        instance.invokeMethodAsync("Resize", rect.width, rect.height);
+      };
+
+      window.addEventListener("resize", ref.resizeHandler);
+
+      var rect = ref.getBoundingClientRect();
+      return { width: rect.width, height: rect.height };
     }
 };

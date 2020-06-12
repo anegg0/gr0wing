@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class EditTblSupplierComponent : ComponentBase
     {
@@ -41,8 +41,8 @@ namespace Growing.Pages
         [Parameter]
         public dynamic SupplierId { get; set; }
 
-        Growing.Models.Growing.TblSupplier _tblsupplier;
-        protected Growing.Models.Growing.TblSupplier tblsupplier
+        Localhost.Models.Growing.TblSupplier _tblsupplier;
+        protected Localhost.Models.Growing.TblSupplier tblsupplier
         {
             get
             {
@@ -75,7 +75,7 @@ namespace Growing.Pages
             tblsupplier = growingGetTblSupplierBySupplierIdResult;
         }
 
-        protected async System.Threading.Tasks.Task Form0Submit(Growing.Models.Growing.TblSupplier args)
+        protected async System.Threading.Tasks.Task Form0Submit(Localhost.Models.Growing.TblSupplier args)
         {
             try
             {

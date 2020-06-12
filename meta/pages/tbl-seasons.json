@@ -1,35 +1,26 @@
 {
+  "access": [
+    "Authenticated"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Tbl Seasons"
+          "text": "Seasons",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "icon": "add_circle_outline",
-                  "name": "button0",
-                  "style": {
-                    "marginBottom": "10px"
-                  },
-                  "text": "Add",
-                  "type": "button",
                   "events": {
                     "click": [
                       {
                         "path": "add-tbl-season",
-                        "type": "popup",
                         "then": [
                           {
                             "code": "grid0.Reload();",
@@ -39,39 +30,23 @@
                             "code": "await InvokeAsync(() => { StateHasChanged(); });",
                             "type": "execute"
                           }
-                        ]
-                      }
-                    ]
-                  }
-                },
-                {
-                  "name": "grid0",
-                  "allowFiltering": true,
-                  "allowPaging": true,
-                  "allowSorting": true,
-                  "data": "${getTblSeasonsResult}",
-                  "events": {
-                    "loadData": [],
-                    "rowSelect": [
-                      {
-                        "parameters": [
-                          {
-                            "name": "SeasonId",
-                            "value": "${event.SeasonId}"
-                          }
                         ],
-                        "path": "edit-tbl-season",
-                        "type": "popup",
-                        "then": [
-                          {
-                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
-                            "type": "execute"
-                          }
-                        ]
+                        "type": "popup"
                       }
                     ]
                   },
-                  "title": "",
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button"
+                },
+                {
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
                   "columns": [
                     {
                       "property": "SeasonId",
@@ -84,8 +59,6 @@
                     {
                       "filterable": false,
                       "sortable": false,
-                      "width": "70px",
-                      "textAlign": "center",
                       "template": [
                         {
                           "attributes": [
@@ -95,11 +68,6 @@
                             }
                           ],
                           "buttonStyle": "danger",
-                          "icon": "close",
-                          "name": "gridDeleteButton",
-                          "text": "",
-                          "size": "sm",
-                          "type": "button",
                           "events": {
                             "click": [
                               {
@@ -128,19 +96,54 @@
                                 "type": "invoke"
                               }
                             ]
-                          }
+                          },
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "size": "sm",
+                          "text": "",
+                          "type": "button"
                         }
-                      ]
+                      ],
+                      "textAlign": "center",
+                      "width": "70px"
                     }
                   ],
-                  "type": "grid",
-                  "itemType": "Growing.Models.Growing.TblSeason"
+                  "data": "${getTblSeasonsResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "SeasonId",
+                            "value": "${event.SeasonId}"
+                          }
+                        ],
+                        "path": "edit-tbl-season",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ],
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "itemType": "Localhost.Models.Growing.TblSeason",
+                  "name": "grid0",
+                  "title": "",
+                  "type": "grid"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -153,16 +156,13 @@
             "name": "getTblSeasonsResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblSeason>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblSeason>"
           }
         ],
         "type": "invoke"
       }
     ]
   },
-  "name": "Tbl Seasons",
   "layout": "Main",
-  "access": [
-    "Authenticated"
-  ]
+  "name": "Tbl Seasons"
 }

@@ -1,12 +1,12 @@
 ﻿@page "/add-tbl-season"
 @layout MainLayout
-@inherits Growing.Pages.AddTblSeasonComponent
+@inherits Localhost.Pages.AddTblSeasonComponent
 
 @using Radzen
 @using Radzen.Blazor
-@using Growing.Models.Growing
+@using Localhost.Models.Growing
 @using Microsoft.AspNetCore.Identity
-@using Growing.Models
+@using Localhost.Models
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
@@ -14,25 +14,25 @@
   <ChildContent>
     <div class="row">
       <div class="col-md-12">
-        <RadzenTemplateForm Data="@tblseason" Visible="@(tblseason != null)" TItem="Growing.Models.Growing.TblSeason" Submit="@Form0Submit">
+        <RadzenTemplateForm Data="@tblseason" TItem="Localhost.Models.Growing.TblSeason" Visible="@(tblseason != null)" Submit="@Form0Submit">
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Season Name" Component="SeasonName" style="width: 100%">
+                <RadzenLabel Component="SeasonName" style="width: 100%" Text="Season Name">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
                 <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(tblseason.SeasonName)" Name="SeasonName">
                 </RadzenTextBox>
-                <RadzenRequiredValidator Component="SeasonName" Text="SeasonName is required" style="position: absolute">
+                <RadzenRequiredValidator Component="SeasonName" style="position: absolute" Text="SeasonName is required">
                 </RadzenRequiredValidator>
               </div>
             </div>
             <div class="row">
               <div class="col offset-sm-3">
-                <RadzenButton ButtonType="ButtonType.Submit" Icon="save" Text="Save" ButtonStyle="ButtonStyle.Primary">
+                <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save">
                 </RadzenButton>
-                <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Click="@Button2Click">
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-bottom: 3px; margin-left: 3px; margin-right: 3px; margin-top: 3px" Text="Cancel" Click="@Button2Click">
                 </RadzenButton>
               </div>
             </div>

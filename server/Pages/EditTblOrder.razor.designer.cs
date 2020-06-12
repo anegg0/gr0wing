@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class EditTblOrderComponent : ComponentBase
     {
@@ -41,8 +41,8 @@ namespace Growing.Pages
         [Parameter]
         public dynamic OrderId { get; set; }
 
-        Growing.Models.Growing.TblOrder _tblorder;
-        protected Growing.Models.Growing.TblOrder tblorder
+        Localhost.Models.Growing.TblOrder _tblorder;
+        protected Localhost.Models.Growing.TblOrder tblorder
         {
             get
             {
@@ -58,8 +58,8 @@ namespace Growing.Pages
             }
         }
 
-        IEnumerable<Growing.Models.Growing.TblCustomer> _getTblCustomersForCustomerIdResult;
-        protected IEnumerable<Growing.Models.Growing.TblCustomer> getTblCustomersForCustomerIdResult
+        IEnumerable<Localhost.Models.Growing.TblCustomer> _getTblCustomersForCustomerIdResult;
+        protected IEnumerable<Localhost.Models.Growing.TblCustomer> getTblCustomersForCustomerIdResult
         {
             get
             {
@@ -95,7 +95,7 @@ namespace Growing.Pages
             getTblCustomersForCustomerIdResult = growingGetTblCustomersResult;
         }
 
-        protected async System.Threading.Tasks.Task Form0Submit(Growing.Models.Growing.TblOrder args)
+        protected async System.Threading.Tasks.Task Form0Submit(Localhost.Models.Growing.TblOrder args)
         {
             try
             {

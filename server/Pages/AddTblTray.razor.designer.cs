@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class AddTblTrayComponent : ComponentBase
     {
@@ -38,42 +38,8 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        IEnumerable<Growing.Models.Growing.TblCustomer> _getTblCustomersForCustomerIdResult;
-        protected IEnumerable<Growing.Models.Growing.TblCustomer> getTblCustomersForCustomerIdResult
-        {
-            get
-            {
-                return _getTblCustomersForCustomerIdResult;
-            }
-            set
-            {
-                if(!object.Equals(_getTblCustomersForCustomerIdResult, value))
-                {
-                    _getTblCustomersForCustomerIdResult = value;
-                    InvokeAsync(() => { StateHasChanged(); });
-                }
-            }
-        }
-
-        IEnumerable<Growing.Models.Growing.TblSeed> _getTblSeedsForSeedIdResult;
-        protected IEnumerable<Growing.Models.Growing.TblSeed> getTblSeedsForSeedIdResult
-        {
-            get
-            {
-                return _getTblSeedsForSeedIdResult;
-            }
-            set
-            {
-                if(!object.Equals(_getTblSeedsForSeedIdResult, value))
-                {
-                    _getTblSeedsForSeedIdResult = value;
-                    InvokeAsync(() => { StateHasChanged(); });
-                }
-            }
-        }
-
-        IEnumerable<Growing.Models.Growing.TblTrayType> _getTblTrayTypesForTrayTypeIdResult;
-        protected IEnumerable<Growing.Models.Growing.TblTrayType> getTblTrayTypesForTrayTypeIdResult
+        IEnumerable<Localhost.Models.Growing.TblTrayType> _getTblTrayTypesForTrayTypeIdResult;
+        protected IEnumerable<Localhost.Models.Growing.TblTrayType> getTblTrayTypesForTrayTypeIdResult
         {
             get
             {
@@ -89,8 +55,42 @@ namespace Growing.Pages
             }
         }
 
-        Growing.Models.Growing.TblTray _tbltray;
-        protected Growing.Models.Growing.TblTray tbltray
+        IEnumerable<Localhost.Models.Growing.TblSeed> _getTblSeedsForSeedIdResult;
+        protected IEnumerable<Localhost.Models.Growing.TblSeed> getTblSeedsForSeedIdResult
+        {
+            get
+            {
+                return _getTblSeedsForSeedIdResult;
+            }
+            set
+            {
+                if(!object.Equals(_getTblSeedsForSeedIdResult, value))
+                {
+                    _getTblSeedsForSeedIdResult = value;
+                    InvokeAsync(() => { StateHasChanged(); });
+                }
+            }
+        }
+
+        IEnumerable<Localhost.Models.Growing.TblCustomer> _getTblCustomersForCustomerIdResult;
+        protected IEnumerable<Localhost.Models.Growing.TblCustomer> getTblCustomersForCustomerIdResult
+        {
+            get
+            {
+                return _getTblCustomersForCustomerIdResult;
+            }
+            set
+            {
+                if(!object.Equals(_getTblCustomersForCustomerIdResult, value))
+                {
+                    _getTblCustomersForCustomerIdResult = value;
+                    InvokeAsync(() => { StateHasChanged(); });
+                }
+            }
+        }
+
+        Localhost.Models.Growing.TblTray _tbltray;
+        protected Localhost.Models.Growing.TblTray tbltray
         {
             get
             {
@@ -119,19 +119,19 @@ namespace Growing.Pages
         }
         protected async System.Threading.Tasks.Task Load()
         {
-            var growingGetTblCustomersResult = await Growing.GetTblCustomers();
-            getTblCustomersForCustomerIdResult = growingGetTblCustomersResult;
+            var growingGetTblTrayTypesResult = await Growing.GetTblTrayTypes();
+            getTblTrayTypesForTrayTypeIdResult = growingGetTblTrayTypesResult;
 
             var growingGetTblSeedsResult = await Growing.GetTblSeeds();
             getTblSeedsForSeedIdResult = growingGetTblSeedsResult;
 
-            var growingGetTblTrayTypesResult = await Growing.GetTblTrayTypes();
-            getTblTrayTypesForTrayTypeIdResult = growingGetTblTrayTypesResult;
+            var growingGetTblCustomersResult = await Growing.GetTblCustomers();
+            getTblCustomersForCustomerIdResult = growingGetTblCustomersResult;
 
-            tbltray = new Growing.Models.Growing.TblTray(){};
+            tbltray = new Localhost.Models.Growing.TblTray(){};
         }
 
-        protected async System.Threading.Tasks.Task Form0Submit(Growing.Models.Growing.TblTray args)
+        protected async System.Threading.Tasks.Task Form0Submit(Localhost.Models.Growing.TblTray args)
         {
             try
             {

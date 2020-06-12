@@ -1,32 +1,32 @@
 ﻿@page "/tbl-seasons"
 @layout MainLayout
-@inherits Growing.Pages.TblSeasonsComponent
+@inherits Localhost.Pages.TblSeasonsComponent
 
 @using Radzen
 @using Radzen.Blazor
-@using Growing.Models.Growing
+@using Localhost.Models.Growing
 @using Microsoft.AspNetCore.Identity
-@using Growing.Models
+@using Localhost.Models
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
 <RadzenContent Container="main">
   <ChildContent>
-    <RadzenHeading Size="H1" Text="Tbl Seasons">
+    <RadzenHeading Size="H1" Text="Seasons">
     </RadzenHeading>
     <div class="row">
       <div class="col-md-12">
         <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
         </RadzenButton>
-        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblSeasonsResult" TItem="Growing.Models.Growing.TblSeason" RowSelect="@Grid0RowSelect">
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblSeasonsResult" TItem="Localhost.Models.Growing.TblSeason" RowSelect="@Grid0RowSelect">
           <Columns>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeason" Property="SeasonId" Title="Season Id">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSeason" Property="SeasonId" Title="Season Id">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeason" Property="SeasonName" Title="Season Name">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSeason" Property="SeasonName" Title="Season Name">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSeason" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
-              <Template Context="growingModelsGrowingTblSeason">
-                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, growingModelsGrowingTblSeason))" @onclick:stopPropagation="true">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSeason" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
+              <Template Context="localhostModelsGrowingTblSeason">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, localhostModelsGrowingTblSeason))" @onclick:stopPropagation="true">
                 </RadzenButton>
               </Template>
             </RadzenGridColumn>

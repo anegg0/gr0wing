@@ -1,35 +1,26 @@
 {
+  "access": [
+    "Authenticated"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Tbl Tray Types"
+          "text": "Tray Types",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "icon": "add_circle_outline",
-                  "name": "button0",
-                  "style": {
-                    "marginBottom": "10px"
-                  },
-                  "text": "Add",
-                  "type": "button",
                   "events": {
                     "click": [
                       {
                         "path": "add-tbl-tray-type",
-                        "type": "popup",
                         "then": [
                           {
                             "code": "grid0.Reload();",
@@ -39,69 +30,51 @@
                             "code": "await InvokeAsync(() => { StateHasChanged(); });",
                             "type": "execute"
                           }
-                        ]
-                      }
-                    ]
-                  }
-                },
-                {
-                  "name": "grid0",
-                  "allowFiltering": true,
-                  "allowPaging": true,
-                  "allowSorting": true,
-                  "data": "${getTblTrayTypesResult}",
-                  "events": {
-                    "loadData": [],
-                    "rowSelect": [
-                      {
-                        "parameters": [
-                          {
-                            "name": "TrayTypeId",
-                            "value": "${event.TrayTypeId}"
-                          }
                         ],
-                        "path": "edit-tbl-tray-type",
-                        "type": "popup",
-                        "then": [
-                          {
-                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
-                            "type": "execute"
-                          }
-                        ]
+                        "type": "popup"
                       }
                     ]
                   },
-                  "title": "",
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button"
+                },
+                {
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
                   "columns": [
                     {
-                      "property": "TrayHandle",
-                      "title": "Tray Handle"
-                    },
-                    {
-                      "property": "TrayHeight",
-                      "title": "Tray Height"
-                    },
-                    {
-                      "property": "TrayLength",
-                      "title": "Tray Length"
+                      "property": "TrayTypeId",
+                      "title": "Tray Type Id"
                     },
                     {
                       "property": "TrayName",
                       "title": "Tray Name"
                     },
                     {
-                      "property": "TrayTypeId",
-                      "title": "Tray Type Id"
+                      "property": "TrayHandle",
+                      "title": "Tray Handle"
+                    },
+                    {
+                      "property": "TrayLength",
+                      "title": "Tray Length"
                     },
                     {
                       "property": "TrayWidth",
                       "title": "Tray Width"
                     },
                     {
+                      "property": "TrayHeight",
+                      "title": "Tray Height"
+                    },
+                    {
                       "filterable": false,
                       "sortable": false,
-                      "width": "70px",
-                      "textAlign": "center",
                       "template": [
                         {
                           "attributes": [
@@ -111,11 +84,6 @@
                             }
                           ],
                           "buttonStyle": "danger",
-                          "icon": "close",
-                          "name": "gridDeleteButton",
-                          "text": "",
-                          "size": "sm",
-                          "type": "button",
                           "events": {
                             "click": [
                               {
@@ -144,19 +112,54 @@
                                 "type": "invoke"
                               }
                             ]
-                          }
+                          },
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "size": "sm",
+                          "text": "",
+                          "type": "button"
                         }
-                      ]
+                      ],
+                      "textAlign": "center",
+                      "width": "70px"
                     }
                   ],
-                  "type": "grid",
-                  "itemType": "Growing.Models.Growing.TblTrayType"
+                  "data": "${getTblTrayTypesResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "TrayTypeId",
+                            "value": "${event.TrayTypeId}"
+                          }
+                        ],
+                        "path": "edit-tbl-tray-type",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ],
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "itemType": "Localhost.Models.Growing.TblTrayType",
+                  "name": "grid0",
+                  "title": "",
+                  "type": "grid"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -169,16 +172,13 @@
             "name": "getTblTrayTypesResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblTrayType>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblTrayType>"
           }
         ],
         "type": "invoke"
       }
     ]
   },
-  "name": "Tbl Tray Types",
   "layout": "Main",
-  "access": [
-    "Authenticated"
-  ]
+  "name": "Tbl Tray Types"
 }

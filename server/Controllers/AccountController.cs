@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing
+namespace Localhost
 {
     public partial class AccountController : Controller
     {

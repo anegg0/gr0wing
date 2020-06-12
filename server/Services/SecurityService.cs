@@ -12,10 +12,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Components.Authorization;
-using Growing.Models;
-using Growing.Data;
+using Localhost.Models;
+using Localhost.Data;
 
-namespace Growing
+namespace Localhost
 {
     public class SecurityService
     {

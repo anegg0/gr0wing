@@ -1,100 +1,104 @@
 {
+  "access": [
+    "Authenticated"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "type": "template-form",
-                  "name": "form0",
                   "components": [
                     {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Season Name",
                               "component": "SeasonName",
                               "name": "SeasonNameLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Season Name",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "valueType": "string",
                               "maxLength": 50,
-                              "type": "textbox",
                               "name": "SeasonName",
                               "style": {
                                 "display": "block",
                                 "width": "100%"
                               },
-                              "value": "${tblseason.SeasonName}"
+                              "type": "textbox",
+                              "value": "${tblseason.SeasonName}",
+                              "valueType": "string"
                             },
                             {
-                              "type": "required-validator",
-                              "name": "SeasonNameRequiredValidator",
                               "component": "SeasonName",
-                              "text": "SeasonName is required",
+                              "name": "SeasonNameRequiredValidator",
                               "style": {
                                 "position": "absolute"
-                              }
+                              },
+                              "text": "SeasonName is required",
+                              "type": "required-validator"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
                     },
                     {
-                      "type": "row",
                       "components": [
                         {
-                          "type": "col",
                           "class": "col offset-sm-3",
                           "components": [
                             {
-                              "type": "button",
+                              "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
                               "text": "Save",
-                              "buttonStyle": "primary"
+                              "type": "button"
                             },
                             {
-                              "type": "button",
                               "buttonStyle": "light",
-                              "text": "Cancel",
                               "events": {
                                 "click": [
                                   {
                                     "type": "close-popup"
                                   }
                                 ]
-                              }
+                              },
+                              "style": {
+                                "marginBottom": "3px",
+                                "marginLeft": "3px",
+                                "marginRight": "3px",
+                                "marginTop": "3px"
+                              },
+                              "text": "Cancel",
+                              "type": "button"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "type": "row"
                     }
                   ],
+                  "data": "${tblseason}",
                   "events": {
                     "submit": [
                       {
@@ -115,23 +119,28 @@
                         ],
                         "then": [
                           {
-                            "type": "close-popup",
-                            "result": "${tblseason}"
+                            "result": "${tblseason}",
+                            "type": "close-popup"
                           }
                         ],
                         "type": "invoke"
                       }
                     ]
                   },
-                  "data": "${tblseason}",
-                  "visible": "${tblseason != null}",
-                  "itemType": "Growing.Models.Growing.TblSeason"
+                  "itemType": "Localhost.Models.Growing.TblSeason",
+                  "name": "form0",
+                  "type": "template-form",
+                  "visible": "${tblseason != null}"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -139,14 +148,11 @@
       {
         "name": "tblseason",
         "type": "set",
-        "value": "new Growing.Models.Growing.TblSeason(){}",
-        "valueType": "Growing.Models.Growing.TblSeason"
+        "value": "new Localhost.Models.Growing.TblSeason(){}",
+        "valueType": "Localhost.Models.Growing.TblSeason"
       }
     ]
   },
-  "name": "Add Tbl Season",
   "layout": "Main",
-  "access": [
-    "Authenticated"
-  ]
+  "name": "Add Tbl Season"
 }

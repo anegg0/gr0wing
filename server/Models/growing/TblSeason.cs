@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Growing.Models.Growing
+namespace Localhost.Models.Growing
 {
   [Table("tblSeason")]
   public partial class TblSeason

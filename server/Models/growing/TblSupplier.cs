@@ -2,21 +2,11 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Growing.Models.Growing
+namespace Localhost.Models.Growing
 {
   [Table("tblSupplier")]
   public partial class TblSupplier
   {
-    public string SupplierContactName
-    {
-      get;
-      set;
-    }
-    public string SupplierCountry
-    {
-      get;
-      set;
-    }
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int SupplierId
@@ -24,17 +14,7 @@ namespace Growing.Models.Growing
       get;
       set;
     }
-    public string SupplierPhoneNumber1
-    {
-      get;
-      set;
-    }
-    public string SupplierPhoneNumber2
-    {
-      get;
-      set;
-    }
-    public string SupplierState
+    public string SupplierContactName
     {
       get;
       set;
@@ -54,6 +34,26 @@ namespace Growing.Models.Growing
       set;
     }
     public string SupplierZipcode
+    {
+      get;
+      set;
+    }
+    public string SupplierState
+    {
+      get;
+      set;
+    }
+    public string SupplierCountry
+    {
+      get;
+      set;
+    }
+    public string SupplierPhoneNumber1
+    {
+      get;
+      set;
+    }
+    public string SupplierPhoneNumber2
     {
       get;
       set;

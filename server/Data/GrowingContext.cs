@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 
-namespace Growing.Data
+namespace Localhost.Data
 {
   public partial class GrowingContext : Microsoft.EntityFrameworkCore.DbContext
   {
@@ -26,74 +26,74 @@ namespace Growing.Data
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<Growing.Models.Growing.TblOrder>()
+        builder.Entity<Localhost.Models.Growing.TblOrder>()
               .HasOne(i => i.TblCustomer)
               .WithMany(i => i.TblOrders)
               .HasForeignKey(i => i.CustomerId)
               .HasPrincipalKey(i => i.CustomerId);
-        builder.Entity<Growing.Models.Growing.TblSeed>()
+        builder.Entity<Localhost.Models.Growing.TblSeed>()
               .HasOne(i => i.TblSeason)
               .WithMany(i => i.TblSeeds)
               .HasForeignKey(i => i.SeasonId)
               .HasPrincipalKey(i => i.SeasonId);
-        builder.Entity<Growing.Models.Growing.TblTray>()
-              .HasOne(i => i.TblCustomer)
-              .WithMany(i => i.TblTrays)
-              .HasForeignKey(i => i.CustomerId)
-              .HasPrincipalKey(i => i.CustomerId);
-        builder.Entity<Growing.Models.Growing.TblTray>()
-              .HasOne(i => i.TblSeed)
-              .WithMany(i => i.TblTrays)
-              .HasForeignKey(i => i.SeedId)
-              .HasPrincipalKey(i => i.SeedId);
-        builder.Entity<Growing.Models.Growing.TblTray>()
+        builder.Entity<Localhost.Models.Growing.TblTray>()
               .HasOne(i => i.TblTrayType)
               .WithMany(i => i.TblTrays)
               .HasForeignKey(i => i.TrayTypeId)
               .HasPrincipalKey(i => i.TrayTypeId);
+        builder.Entity<Localhost.Models.Growing.TblTray>()
+              .HasOne(i => i.TblSeed)
+              .WithMany(i => i.TblTrays)
+              .HasForeignKey(i => i.SeedId)
+              .HasPrincipalKey(i => i.SeedId);
+        builder.Entity<Localhost.Models.Growing.TblTray>()
+              .HasOne(i => i.TblCustomer)
+              .WithMany(i => i.TblTrays)
+              .HasForeignKey(i => i.CustomerId)
+              .HasPrincipalKey(i => i.CustomerId);
 
 
         this.OnModelBuilding(builder);
     }
 
 
-    public DbSet<Growing.Models.Growing.TblCustomer> TblCustomers
+    public DbSet<Localhost.Models.Growing.TblCustomer> TblCustomers
     {
       get;
       set;
     }
 
-    public DbSet<Growing.Models.Growing.TblOrder> TblOrders
+    public DbSet<Localhost.Models.Growing.TblOrder> TblOrders
     {
       get;
       set;
     }
 
-    public DbSet<Growing.Models.Growing.TblSeason> TblSeasons
+    public DbSet<Localhost.Models.Growing.TblSeason> TblSeasons
     {
       get;
       set;
     }
 
-    public DbSet<Growing.Models.Growing.TblSeed> TblSeeds
+    public DbSet<Localhost.Models.Growing.TblSeed> TblSeeds
     {
       get;
       set;
     }
 
-    public DbSet<Growing.Models.Growing.TblSupplier> TblSuppliers
+    public DbSet<Localhost.Models.Growing.TblSupplier> TblSuppliers
     {
       get;
       set;
     }
 
-    public DbSet<Growing.Models.Growing.TblTray> TblTrays
+    public DbSet<Localhost.Models.Growing.TblTray> TblTrays
     {
       get;
       set;
     }
 
-    public DbSet<Growing.Models.Growing.TblTrayType> TblTrayTypes
+    public DbSet<Localhost.Models.Growing.TblTrayType> TblTrayTypes
     {
       get;
       set;

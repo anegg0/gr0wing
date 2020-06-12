@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Growing
+namespace Localhost
 {
     public partial class UploadController : Controller
     {

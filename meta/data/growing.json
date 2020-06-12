@@ -9,19 +9,10 @@
       "x-table": "def.tblCustomer",
       "resource": "TblCustomers",
       "required": [
-        "CustomerContactName",
-        "CustomerName"
+        "CustomerName",
+        "CustomerContactName"
       ],
       "properties": {
-        "CustomerContactName": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 40
-        },
-        "CustomerCountry": {
-          "type": "string",
-          "length": 20
-        },
         "CustomerId": {
           "x-key": true,
           "x-identity": true,
@@ -45,17 +36,10 @@
           "type": "string",
           "length": 50
         },
-        "CustomerPhoneNumber1": {
+        "CustomerContactName": {
+          "x-nullable": false,
           "type": "string",
-          "length": 20
-        },
-        "CustomerPhoneNumber2": {
-          "type": "string",
-          "length": 20
-        },
-        "CustomerState": {
-          "type": "string",
-          "length": 20
+          "length": 40
         },
         "CustomerStreetAddress1": {
           "x-original-name": "CustomerStreetAddress 1",
@@ -68,6 +52,22 @@
           "length": 100
         },
         "CustomerZipcode": {
+          "type": "string",
+          "length": 20
+        },
+        "CustomerState": {
+          "type": "string",
+          "length": 20
+        },
+        "CustomerCountry": {
+          "type": "string",
+          "length": 20
+        },
+        "CustomerPhoneNumber1": {
+          "type": "string",
+          "length": 20
+        },
+        "CustomerPhoneNumber2": {
           "type": "string",
           "length": 20
         },
@@ -89,10 +89,29 @@
       "x-table": "def.tblOrder",
       "resource": "TblOrders",
       "required": [
-        "OrderDeliveryDate",
-        "OrderSequence"
+        "OrderSequence",
+        "OrderDeliveryDate"
       ],
       "properties": {
+        "OrderId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "OrderSequence": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "OrderDeliveryDate": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
+        },
+        "OrderDelivered": {
+          "x-nullable": false,
+          "type": "boolean"
+        },
         "TblCustomer": {
           "type": "object",
           "$ref": "#/definitions/TblCustomer"
@@ -105,28 +124,9 @@
             "type": "TblCustomer",
             "principalKey": "CustomerId",
             "name": "TblCustomer",
-            "textProperty": "CustomerContactName",
+            "textProperty": "CustomerName",
             "navigationProperty": "TblOrders"
           }
-        },
-        "OrderDelivered": {
-          "x-nullable": false,
-          "type": "boolean"
-        },
-        "OrderDeliveryDate": {
-          "x-nullable": false,
-          "type": "string",
-          "format": "date-time"
-        },
-        "OrderId": {
-          "x-key": true,
-          "x-identity": true,
-          "x-nullable": false,
-          "type": "integer"
-        },
-        "OrderSequence": {
-          "x-nullable": false,
-          "type": "integer"
         }
       }
     },
@@ -167,14 +167,64 @@
       "x-table": "def.tblSeed",
       "resource": "TblSeeds",
       "required": [
-        "CurrentDTM",
-        "SeasonId",
+        "SeedName",
         "SeedHandle",
-        "SeedingRate",
         "SeedLifetime",
-        "SeedName"
+        "SeedingRate",
+        "SeasonId",
+        "CurrentDTM"
       ],
       "properties": {
+        "SeedId": {
+          "x-key": true,
+          "x-identity": true,
+          "x-nullable": false,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "TblSeed",
+              "name": "TblTrays",
+              "type": "TblTray"
+            }
+          ]
+        },
+        "SeedName": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "SeedHandle": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "SeedLifetime": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "SeedingRate": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "TblSeason": {
+          "type": "object",
+          "$ref": "#/definitions/TblSeason"
+        },
+        "SeasonId": {
+          "x-nullable": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "tblSeason",
+            "parentEntityType": "TblSeason",
+            "type": "TblSeason",
+            "principalKey": "SeasonId",
+            "name": "TblSeason",
+            "textProperty": "SeasonName",
+            "navigationProperty": "TblSeeds"
+          }
+        },
         "CurrentDTM": {
           "x-nullable": false,
           "type": "string",
@@ -196,56 +246,6 @@
           "type": "string",
           "length": 11
         },
-        "TblSeason": {
-          "type": "object",
-          "$ref": "#/definitions/TblSeason"
-        },
-        "SeasonId": {
-          "x-nullable": false,
-          "type": "integer",
-          "x-foreignKey": {
-            "parentTable": "tblSeason",
-            "parentEntityType": "TblSeason",
-            "type": "TblSeason",
-            "principalKey": "SeasonId",
-            "name": "TblSeason",
-            "textProperty": "SeasonName",
-            "navigationProperty": "TblSeeds"
-          }
-        },
-        "SeedHandle": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 11
-        },
-        "SeedId": {
-          "x-key": true,
-          "x-identity": true,
-          "x-nullable": false,
-          "type": "integer",
-          "x-navigation": [
-            {
-              "inversePropertyName": "TblSeed",
-              "name": "TblTrays",
-              "type": "TblTray"
-            }
-          ]
-        },
-        "SeedingRate": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 11
-        },
-        "SeedLifetime": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 11
-        },
-        "SeedName": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 50
-        },
         "TblTrays": {
           "type": "array",
           "items": {
@@ -261,32 +261,16 @@
         "SupplierContactName"
       ],
       "properties": {
-        "SupplierContactName": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 40
-        },
-        "SupplierCountry": {
-          "type": "string",
-          "length": 20
-        },
         "SupplierId": {
           "x-key": true,
           "x-identity": true,
           "x-nullable": false,
           "type": "integer"
         },
-        "SupplierPhoneNumber1": {
+        "SupplierContactName": {
+          "x-nullable": false,
           "type": "string",
-          "length": 20
-        },
-        "SupplierPhoneNumber2": {
-          "type": "string",
-          "length": 20
-        },
-        "SupplierState": {
-          "type": "string",
-          "length": 20
+          "length": 40
         },
         "SupplierStreetAddress1": {
           "x-original-name": "SupplierStreetAddress 1",
@@ -301,6 +285,22 @@
         "SupplierZipcode": {
           "type": "string",
           "length": 20
+        },
+        "SupplierState": {
+          "type": "string",
+          "length": 20
+        },
+        "SupplierCountry": {
+          "type": "string",
+          "length": 20
+        },
+        "SupplierPhoneNumber1": {
+          "type": "string",
+          "length": 20
+        },
+        "SupplierPhoneNumber2": {
+          "type": "string",
+          "length": 20
         }
       }
     },
@@ -313,60 +313,11 @@
         "TrayUpdateDate"
       ],
       "properties": {
-        "TblCustomer": {
-          "type": "object",
-          "$ref": "#/definitions/TblCustomer"
-        },
-        "CustomerId": {
-          "type": "integer",
-          "x-foreignKey": {
-            "parentTable": "tblCustomer",
-            "parentEntityType": "TblCustomer",
-            "type": "TblCustomer",
-            "principalKey": "CustomerId",
-            "name": "TblCustomer",
-            "textProperty": "CustomerContactName",
-            "navigationProperty": "TblTrays"
-          }
-        },
-        "ExpiryDate": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "TblSeed": {
-          "type": "object",
-          "$ref": "#/definitions/TblSeed"
-        },
-        "SeedId": {
-          "type": "integer",
-          "x-foreignKey": {
-            "parentTable": "tblSeed",
-            "parentEntityType": "TblSeed",
-            "type": "TblSeed",
-            "principalKey": "SeedId",
-            "name": "TblSeed",
-            "textProperty": "CurrentDTM",
-            "navigationProperty": "TblTrays"
-          }
-        },
-        "Status": {
-          "type": "string",
-          "length": 50
-        },
         "TrayId": {
           "x-key": true,
           "x-identity": true,
           "x-nullable": false,
           "type": "integer"
-        },
-        "TraySequenceNumber": {
-          "x-nullable": false,
-          "type": "integer"
-        },
-        "TraySowingDate": {
-          "x-nullable": false,
-          "type": "string",
-          "format": "date-time"
         },
         "TblTrayType": {
           "type": "object",
@@ -380,14 +331,63 @@
             "type": "TblTrayType",
             "principalKey": "TrayTypeId",
             "name": "TblTrayType",
-            "textProperty": "TrayHandle",
+            "textProperty": "TrayName",
             "navigationProperty": "TblTrays"
           }
+        },
+        "TblSeed": {
+          "type": "object",
+          "$ref": "#/definitions/TblSeed"
+        },
+        "SeedId": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "tblSeed",
+            "parentEntityType": "TblSeed",
+            "type": "TblSeed",
+            "principalKey": "SeedId",
+            "name": "TblSeed",
+            "textProperty": "SeedName",
+            "navigationProperty": "TblTrays"
+          }
+        },
+        "TblCustomer": {
+          "type": "object",
+          "$ref": "#/definitions/TblCustomer"
+        },
+        "CustomerId": {
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "tblCustomer",
+            "parentEntityType": "TblCustomer",
+            "type": "TblCustomer",
+            "principalKey": "CustomerId",
+            "name": "TblCustomer",
+            "textProperty": "CustomerName",
+            "navigationProperty": "TblTrays"
+          }
+        },
+        "TraySequenceNumber": {
+          "x-nullable": false,
+          "type": "integer"
+        },
+        "TraySowingDate": {
+          "x-nullable": false,
+          "type": "string",
+          "format": "date-time"
         },
         "TrayUpdateDate": {
           "x-nullable": false,
           "type": "string",
           "format": "date-time"
+        },
+        "ExpiryDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Status": {
+          "type": "string",
+          "length": 50
         }
       }
     },
@@ -395,33 +395,13 @@
       "x-table": "def.tblTrayType",
       "resource": "TblTrayTypes",
       "required": [
-        "TrayHandle",
-        "TrayHeight",
-        "TrayLength",
         "TrayName",
-        "TrayWidth"
+        "TrayHandle",
+        "TrayLength",
+        "TrayWidth",
+        "TrayHeight"
       ],
       "properties": {
-        "TrayHandle": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 11
-        },
-        "TrayHeight": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 11
-        },
-        "TrayLength": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 11
-        },
-        "TrayName": {
-          "x-nullable": false,
-          "type": "string",
-          "length": 50
-        },
         "TrayTypeId": {
           "x-key": true,
           "x-identity": true,
@@ -435,7 +415,27 @@
             }
           ]
         },
+        "TrayName": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 50
+        },
+        "TrayHandle": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "TrayLength": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
         "TrayWidth": {
+          "x-nullable": false,
+          "type": "string",
+          "length": 11
+        },
+        "TrayHeight": {
           "x-nullable": false,
           "type": "string",
           "length": 11

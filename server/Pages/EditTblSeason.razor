@@ -1,12 +1,12 @@
 ﻿@page "/edit-tbl-season/{SeasonId}"
 @layout MainLayout
-@inherits Growing.Pages.EditTblSeasonComponent
+@inherits Localhost.Pages.EditTblSeasonComponent
 
 @using Radzen
 @using Radzen.Blazor
-@using Growing.Models.Growing
+@using Localhost.Models.Growing
 @using Microsoft.AspNetCore.Identity
-@using Growing.Models
+@using Localhost.Models
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
@@ -14,7 +14,7 @@
   <ChildContent>
     <div class="row">
       <div class="col-md-12">
-        <RadzenTemplateForm TItem="Growing.Models.Growing.TblSeason" Data="@tblseason" Visible="@(tblseason != null)" Submit="@Form0Submit">
+        <RadzenTemplateForm TItem="Localhost.Models.Growing.TblSeason" Data="@tblseason" Visible="@(tblseason != null)" Submit="@Form0Submit">
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">

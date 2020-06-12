@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class TblTraysComponent : ComponentBase
     {
@@ -38,10 +38,10 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        protected RadzenGrid<Growing.Models.Growing.TblTray> grid0;
+        protected RadzenGrid<Localhost.Models.Growing.TblTray> grid0;
 
-        IEnumerable<Growing.Models.Growing.TblTray> _getTblTraysResult;
-        protected IEnumerable<Growing.Models.Growing.TblTray> getTblTraysResult
+        IEnumerable<Localhost.Models.Growing.TblTray> _getTblTraysResult;
+        protected IEnumerable<Localhost.Models.Growing.TblTray> getTblTraysResult
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Growing.Pages
             await InvokeAsync(() => { StateHasChanged(); });
         }
 
-        protected async System.Threading.Tasks.Task Grid0RowSelect(Growing.Models.Growing.TblTray args)
+        protected async System.Threading.Tasks.Task Grid0RowSelect(Localhost.Models.Growing.TblTray args)
         {
             var dialogResult = await DialogService.OpenAsync<EditTblTray>("Edit Tbl Tray", new Dictionary<string, object>() { {"TrayId", args.TrayId} });
             await InvokeAsync(() => { StateHasChanged(); });

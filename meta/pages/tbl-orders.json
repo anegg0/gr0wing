@@ -1,35 +1,26 @@
 {
+  "access": [
+    "Authenticated"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "heading",
           "name": "pageTitle",
           "size": "H1",
-          "text": "Tbl Orders"
+          "text": "Orders",
+          "type": "heading"
         },
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "icon": "add_circle_outline",
-                  "name": "button0",
-                  "style": {
-                    "marginBottom": "10px"
-                  },
-                  "text": "Add",
-                  "type": "button",
                   "events": {
                     "click": [
                       {
                         "path": "add-tbl-order",
-                        "type": "popup",
                         "then": [
                           {
                             "code": "grid0.Reload();",
@@ -39,56 +30,24 @@
                             "code": "await InvokeAsync(() => { StateHasChanged(); });",
                             "type": "execute"
                           }
-                        ]
-                      }
-                    ]
-                  }
-                },
-                {
-                  "name": "grid0",
-                  "allowFiltering": true,
-                  "allowPaging": true,
-                  "allowSorting": true,
-                  "data": "${getTblOrdersResult}",
-                  "events": {
-                    "loadData": [],
-                    "rowSelect": [
-                      {
-                        "parameters": [
-                          {
-                            "name": "OrderId",
-                            "value": "${event.OrderId}"
-                          }
                         ],
-                        "path": "edit-tbl-order",
-                        "type": "popup",
-                        "then": [
-                          {
-                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
-                            "type": "execute"
-                          }
-                        ]
+                        "type": "popup"
                       }
                     ]
                   },
-                  "title": "",
+                  "icon": "add_circle_outline",
+                  "name": "button0",
+                  "style": {
+                    "marginBottom": "10px"
+                  },
+                  "text": "Add",
+                  "type": "button"
+                },
+                {
+                  "allowFiltering": true,
+                  "allowPaging": true,
+                  "allowSorting": true,
                   "columns": [
-                    {
-                      "property": "CustomerId",
-                      "sortProperty": "TblCustomer.CustomerContactName",
-                      "filterProperty": "TblCustomer.CustomerContactName",
-                      "template": "${data.TblCustomer?.CustomerContactName}",
-                      "title": "Tbl Customer"
-                    },
-                    {
-                      "property": "OrderDelivered",
-                      "title": "Order Delivered"
-                    },
-                    {
-                      "property": "OrderDeliveryDate",
-                      "formatString": "{0:MM/dd/yyyy}",
-                      "title": "Order Delivery Date"
-                    },
                     {
                       "property": "OrderId",
                       "title": "Order Id"
@@ -98,10 +57,24 @@
                       "title": "Order Sequence"
                     },
                     {
+                      "formatString": "{0:MM/dd/yyyy}",
+                      "property": "OrderDeliveryDate",
+                      "title": "Order Delivery Date"
+                    },
+                    {
+                      "property": "OrderDelivered",
+                      "title": "Order Delivered"
+                    },
+                    {
+                      "filterProperty": "TblCustomer.CustomerName",
+                      "property": "CustomerId",
+                      "sortProperty": "TblCustomer.CustomerName",
+                      "template": "${data.TblCustomer?.CustomerName}",
+                      "title": "Tbl Customer"
+                    },
+                    {
                       "filterable": false,
                       "sortable": false,
-                      "width": "70px",
-                      "textAlign": "center",
                       "template": [
                         {
                           "attributes": [
@@ -111,11 +84,6 @@
                             }
                           ],
                           "buttonStyle": "danger",
-                          "icon": "close",
-                          "name": "gridDeleteButton",
-                          "text": "",
-                          "size": "sm",
-                          "type": "button",
                           "events": {
                             "click": [
                               {
@@ -144,19 +112,54 @@
                                 "type": "invoke"
                               }
                             ]
-                          }
+                          },
+                          "icon": "close",
+                          "name": "gridDeleteButton",
+                          "size": "sm",
+                          "text": "",
+                          "type": "button"
                         }
-                      ]
+                      ],
+                      "textAlign": "center",
+                      "width": "70px"
                     }
                   ],
-                  "type": "grid",
-                  "itemType": "Growing.Models.Growing.TblOrder"
+                  "data": "${getTblOrdersResult}",
+                  "events": {
+                    "loadData": [],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "OrderId",
+                            "value": "${event.OrderId}"
+                          }
+                        ],
+                        "path": "edit-tbl-order",
+                        "then": [
+                          {
+                            "code": "await InvokeAsync(() => { StateHasChanged(); });",
+                            "type": "execute"
+                          }
+                        ],
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "itemType": "Localhost.Models.Growing.TblOrder",
+                  "name": "grid0",
+                  "title": "",
+                  "type": "grid"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -169,16 +172,13 @@
             "name": "getTblOrdersResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblOrder>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblOrder>"
           }
         ],
         "type": "invoke"
       }
     ]
   },
-  "name": "Tbl Orders",
   "layout": "Main",
-  "access": [
-    "Authenticated"
-  ]
+  "name": "Tbl Orders"
 }

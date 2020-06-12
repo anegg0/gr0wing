@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class TblSeasonsComponent : ComponentBase
     {
@@ -38,10 +38,10 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        protected RadzenGrid<Growing.Models.Growing.TblSeason> grid0;
+        protected RadzenGrid<Localhost.Models.Growing.TblSeason> grid0;
 
-        IEnumerable<Growing.Models.Growing.TblSeason> _getTblSeasonsResult;
-        protected IEnumerable<Growing.Models.Growing.TblSeason> getTblSeasonsResult
+        IEnumerable<Localhost.Models.Growing.TblSeason> _getTblSeasonsResult;
+        protected IEnumerable<Localhost.Models.Growing.TblSeason> getTblSeasonsResult
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Growing.Pages
             await InvokeAsync(() => { StateHasChanged(); });
         }
 
-        protected async System.Threading.Tasks.Task Grid0RowSelect(Growing.Models.Growing.TblSeason args)
+        protected async System.Threading.Tasks.Task Grid0RowSelect(Localhost.Models.Growing.TblSeason args)
         {
             var dialogResult = await DialogService.OpenAsync<EditTblSeason>("Edit Tbl Season", new Dictionary<string, object>() { {"SeasonId", args.SeasonId} });
             await InvokeAsync(() => { StateHasChanged(); });

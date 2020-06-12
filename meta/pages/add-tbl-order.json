@@ -1,225 +1,223 @@
 {
+  "access": [
+    "Authenticated"
+  ],
   "components": [
     {
-      "type": "content",
-      "container": "main",
       "components": [
         {
-          "type": "row",
           "components": [
             {
-              "type": "col",
               "class": "col-md-12",
               "components": [
                 {
-                  "type": "template-form",
-                  "name": "form0",
                   "components": [
                     {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
                       "components": [
                         {
-                          "type": "col",
                           "class": "col-md-3",
                           "components": [
                             {
-                              "type": "label",
-                              "text": "Tbl Customer",
-                              "component": "CustomerId",
-                              "name": "CustomerIdLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "data": "${getTblCustomersForCustomerIdResult}",
-                              "textProperty": "CustomerContactName",
-                              "valueProperty": "CustomerId",
-                              "placeholder": "Choose TblCustomer",
-                              "valueType": "int?",
-                              "type": "dropdown-datagrid",
-                              "name": "CustomerId",
-                              "style": {
-                                "width": "100%"
-                              },
-                              "value": "${tblorder.CustomerId}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Order Delivered",
-                              "component": "OrderDelivered",
-                              "name": "OrderDeliveredLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "bool",
-                              "type": "checkbox",
-                              "name": "OrderDelivered",
-                              "value": "${tblorder.OrderDelivered}"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Order Delivery Date",
-                              "component": "OrderDeliveryDate",
-                              "name": "OrderDeliveryDateLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "DateTime",
-                              "dateFormat": "MM/dd/yyyy",
-                              "type": "datepicker",
-                              "name": "OrderDeliveryDate",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tblorder.OrderDeliveryDate}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "OrderDeliveryDateRequiredValidator",
-                              "component": "OrderDeliveryDate",
-                              "text": "OrderDeliveryDate is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Order Sequence",
                               "component": "OrderSequence",
                               "name": "OrderSequenceLabel",
                               "style": {
                                 "width": "100%"
-                              }
+                              },
+                              "text": "Order Sequence",
+                              "type": "label"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         },
                         {
-                          "type": "col",
                           "class": "col-md-9",
                           "components": [
                             {
-                              "valueType": "int",
-                              "type": "numeric",
                               "name": "OrderSequence",
                               "style": {
                                 "display": "block",
                                 "width": "100%"
                               },
-                              "value": "${tblorder.OrderSequence}"
+                              "type": "numeric",
+                              "value": "${tblorder.OrderSequence}",
+                              "valueType": "int"
                             },
                             {
-                              "type": "required-validator",
-                              "name": "OrderSequenceRequiredValidator",
                               "component": "OrderSequence",
-                              "text": "OrderSequence is required",
+                              "name": "OrderSequenceRequiredValidator",
                               "style": {
                                 "position": "absolute"
-                              }
+                              },
+                              "text": "OrderSequence is required",
+                              "type": "required-validator"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
                     },
                     {
-                      "type": "row",
                       "components": [
                         {
-                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "OrderDeliveryDate",
+                              "name": "OrderDeliveryDateLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Order Delivery Date",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "dateFormat": "MM/dd/yyyy",
+                              "name": "OrderDeliveryDate",
+                              "style": {
+                                "display": "block",
+                                "width": "185.5px"
+                              },
+                              "type": "datepicker",
+                              "value": "${tblorder.OrderDeliveryDate}",
+                              "valueType": "DateTime"
+                            },
+                            {
+                              "component": "OrderDeliveryDate",
+                              "name": "OrderDeliveryDateRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "OrderDeliveryDate is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "OrderDelivered",
+                              "name": "OrderDeliveredLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Order Delivered",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "name": "OrderDelivered",
+                              "type": "checkbox",
+                              "value": "${tblorder.OrderDelivered}",
+                              "valueType": "bool"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "CustomerId",
+                              "name": "CustomerIdLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Tbl Customer",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getTblCustomersForCustomerIdResult}",
+                              "name": "CustomerId",
+                              "placeholder": "Choose TblCustomer",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "CustomerName",
+                              "type": "dropdown-datagrid",
+                              "value": "${tblorder.CustomerId}",
+                              "valueProperty": "CustomerId",
+                              "valueType": "int?"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
                           "class": "col offset-sm-3",
                           "components": [
                             {
-                              "type": "button",
+                              "buttonStyle": "primary",
                               "buttonType": "submit",
                               "icon": "save",
                               "text": "Save",
-                              "buttonStyle": "primary"
+                              "type": "button"
                             },
                             {
-                              "type": "button",
                               "buttonStyle": "light",
-                              "text": "Cancel",
                               "events": {
                                 "click": [
                                   {
                                     "type": "close-popup"
                                   }
                                 ]
-                              }
+                              },
+                              "text": "Cancel",
+                              "type": "button"
                             }
-                          ]
+                          ],
+                          "type": "col"
                         }
-                      ]
+                      ],
+                      "type": "row"
                     }
                   ],
+                  "data": "${tblorder}",
                   "events": {
                     "submit": [
                       {
@@ -240,23 +238,28 @@
                         ],
                         "then": [
                           {
-                            "type": "close-popup",
-                            "result": "${tblorder}"
+                            "result": "${tblorder}",
+                            "type": "close-popup"
                           }
                         ],
                         "type": "invoke"
                       }
                     ]
                   },
-                  "data": "${tblorder}",
-                  "visible": "${tblorder != null}",
-                  "itemType": "Growing.Models.Growing.TblOrder"
+                  "itemType": "Localhost.Models.Growing.TblOrder",
+                  "name": "form0",
+                  "type": "template-form",
+                  "visible": "${tblorder != null}"
                 }
-              ]
+              ],
+              "type": "col"
             }
-          ]
+          ],
+          "type": "row"
         }
-      ]
+      ],
+      "container": "main",
+      "type": "content"
     }
   ],
   "events": {
@@ -269,7 +272,7 @@
             "name": "getTblCustomersForCustomerIdResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblCustomer>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblCustomer>"
           }
         ],
         "type": "invoke"
@@ -277,14 +280,11 @@
       {
         "name": "tblorder",
         "type": "set",
-        "value": "new Growing.Models.Growing.TblOrder(){}",
-        "valueType": "Growing.Models.Growing.TblOrder"
+        "value": "new Localhost.Models.Growing.TblOrder(){}",
+        "valueType": "Localhost.Models.Growing.TblOrder"
       }
     ]
   },
-  "name": "Add Tbl Order",
   "layout": "Main",
-  "access": [
-    "Authenticated"
-  ]
+  "name": "Add Tbl Order"
 }

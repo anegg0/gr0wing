@@ -1,12 +1,12 @@
 ﻿@page "/edit-tbl-seed/{SeedId}"
 @layout MainLayout
-@inherits Growing.Pages.EditTblSeedComponent
+@inherits Localhost.Pages.EditTblSeedComponent
 
 @using Radzen
 @using Radzen.Blazor
-@using Growing.Models.Growing
+@using Localhost.Models.Growing
 @using Microsoft.AspNetCore.Identity
-@using Growing.Models
+@using Localhost.Models
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
@@ -14,8 +14,68 @@
   <ChildContent>
     <div class="row">
       <div class="col-md-12">
-        <RadzenTemplateForm TItem="Growing.Models.Growing.TblSeed" Data="@tblseed" Visible="@(tblseed != null)" Submit="@Form0Submit">
+        <RadzenTemplateForm TItem="Localhost.Models.Growing.TblSeed" Data="@tblseed" Visible="@(tblseed != null)" Submit="@Form0Submit">
           <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Seed Name" Component="SeedName" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(tblseed.SeedName)" Name="SeedName">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="SeedName" Text="SeedName is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Seed Handle" Component="SeedHandle" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tblseed.SeedHandle)" Name="SeedHandle">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="SeedHandle" Text="SeedHandle is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Seed Lifetime" Component="SeedLifetime" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tblseed.SeedLifetime)" Name="SeedLifetime">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="SeedLifetime" Text="SeedLifetime is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Seeding Rate" Component="SeedingRate" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tblseed.SeedingRate)" Name="SeedingRate">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="SeedingRate" Text="SeedingRate is required" style="position: absolute">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Tbl Season" Component="SeasonId" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDownDataGrid Data="@getTblSeasonsForSeasonIdResult" TextProperty="SeasonName" ValueProperty="SeasonId" Placeholder="Choose TblSeason" style="display: block; width: 100%" @bind-Value="@(tblseed.SeasonId)" Name="SeasonId">
+                </RadzenDropDownDataGrid>
+                <RadzenRequiredValidator Component="SeasonId" Text="SeasonId is required" style="position: absolute" DefaultValue="0">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
                 <RadzenLabel Text="Current Dtm" Component="CurrentDTM" style="width: 100%">
@@ -66,66 +126,6 @@
               <div class="col-md-9">
                 <RadzenTextBox MaxLength="11" style="width: 100%" @bind-Value="@(tblseed.DTM4)" Name="DTM4">
                 </RadzenTextBox>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Tbl Season" Component="SeasonId" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenDropDownDataGrid Data="@getTblSeasonsForSeasonIdResult" TextProperty="SeasonName" ValueProperty="SeasonId" Placeholder="Choose TblSeason" style="display: block; width: 100%" @bind-Value="@(tblseed.SeasonId)" Name="SeasonId">
-                </RadzenDropDownDataGrid>
-                <RadzenRequiredValidator Component="SeasonId" Text="SeasonId is required" style="position: absolute" DefaultValue="0">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Seed Handle" Component="SeedHandle" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tblseed.SeedHandle)" Name="SeedHandle">
-                </RadzenTextBox>
-                <RadzenRequiredValidator Component="SeedHandle" Text="SeedHandle is required" style="position: absolute">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Seeding Rate" Component="SeedingRate" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tblseed.SeedingRate)" Name="SeedingRate">
-                </RadzenTextBox>
-                <RadzenRequiredValidator Component="SeedingRate" Text="SeedingRate is required" style="position: absolute">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Seed Lifetime" Component="SeedLifetime" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenTextBox MaxLength="11" style="display: block; width: 100%" @bind-Value="@(tblseed.SeedLifetime)" Name="SeedLifetime">
-                </RadzenTextBox>
-                <RadzenRequiredValidator Component="SeedLifetime" Text="SeedLifetime is required" style="position: absolute">
-                </RadzenRequiredValidator>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Seed Name" Component="SeedName" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenTextBox MaxLength="50" style="display: block; width: 100%" @bind-Value="@(tblseed.SeedName)" Name="SeedName">
-                </RadzenTextBox>
-                <RadzenRequiredValidator Component="SeedName" Text="SeedName is required" style="position: absolute">
-                </RadzenRequiredValidator>
               </div>
             </div>
             <div class="row">

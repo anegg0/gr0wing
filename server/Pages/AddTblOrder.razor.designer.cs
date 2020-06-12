@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class AddTblOrderComponent : ComponentBase
     {
@@ -38,8 +38,8 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        IEnumerable<Growing.Models.Growing.TblCustomer> _getTblCustomersForCustomerIdResult;
-        protected IEnumerable<Growing.Models.Growing.TblCustomer> getTblCustomersForCustomerIdResult
+        IEnumerable<Localhost.Models.Growing.TblCustomer> _getTblCustomersForCustomerIdResult;
+        protected IEnumerable<Localhost.Models.Growing.TblCustomer> getTblCustomersForCustomerIdResult
         {
             get
             {
@@ -55,8 +55,8 @@ namespace Growing.Pages
             }
         }
 
-        Growing.Models.Growing.TblOrder _tblorder;
-        protected Growing.Models.Growing.TblOrder tblorder
+        Localhost.Models.Growing.TblOrder _tblorder;
+        protected Localhost.Models.Growing.TblOrder tblorder
         {
             get
             {
@@ -88,10 +88,10 @@ namespace Growing.Pages
             var growingGetTblCustomersResult = await Growing.GetTblCustomers();
             getTblCustomersForCustomerIdResult = growingGetTblCustomersResult;
 
-            tblorder = new Growing.Models.Growing.TblOrder(){};
+            tblorder = new Localhost.Models.Growing.TblOrder(){};
         }
 
-        protected async System.Threading.Tasks.Task Form0Submit(Growing.Models.Growing.TblOrder args)
+        protected async System.Threading.Tasks.Task Form0Submit(Localhost.Models.Growing.TblOrder args)
         {
             try
             {

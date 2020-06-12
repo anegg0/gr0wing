@@ -3,21 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Growing.Models.Growing
+namespace Localhost.Models.Growing
 {
   [Table("tblCustomer")]
   public partial class TblCustomer
   {
-    public string CustomerContactName
-    {
-      get;
-      set;
-    }
-    public string CustomerCountry
-    {
-      get;
-      set;
-    }
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int CustomerId
@@ -33,17 +23,7 @@ namespace Growing.Models.Growing
       get;
       set;
     }
-    public string CustomerPhoneNumber1
-    {
-      get;
-      set;
-    }
-    public string CustomerPhoneNumber2
-    {
-      get;
-      set;
-    }
-    public string CustomerState
+    public string CustomerContactName
     {
       get;
       set;
@@ -63,6 +43,26 @@ namespace Growing.Models.Growing
       set;
     }
     public string CustomerZipcode
+    {
+      get;
+      set;
+    }
+    public string CustomerState
+    {
+      get;
+      set;
+    }
+    public string CustomerCountry
+    {
+      get;
+      set;
+    }
+    public string CustomerPhoneNumber1
+    {
+      get;
+      set;
+    }
+    public string CustomerPhoneNumber2
     {
       get;
       set;

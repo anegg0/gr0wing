@@ -1,12 +1,12 @@
 ﻿@page "/edit-tbl-tray/{TrayId}"
 @layout MainLayout
-@inherits Growing.Pages.EditTblTrayComponent
+@inherits Localhost.Pages.EditTblTrayComponent
 
 @using Radzen
 @using Radzen.Blazor
-@using Growing.Models.Growing
+@using Localhost.Models.Growing
 @using Microsoft.AspNetCore.Identity
-@using Growing.Models
+@using Localhost.Models
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
@@ -14,26 +14,16 @@
   <ChildContent>
     <div class="row">
       <div class="col-md-12">
-        <RadzenTemplateForm TItem="Growing.Models.Growing.TblTray" Data="@tbltray" Visible="@(tbltray != null)" Submit="@Form0Submit">
+        <RadzenTemplateForm TItem="Localhost.Models.Growing.TblTray" Data="@tbltray" Visible="@(tbltray != null)" Submit="@Form0Submit">
           <ChildContent>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Tbl Customer" Component="CustomerId" style="width: 100%">
+                <RadzenLabel Text="Tbl Tray Type" Component="TrayTypeId" style="width: 100%">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenDropDownDataGrid Data="@getTblCustomersForCustomerIdResult" TextProperty="CustomerContactName" ValueProperty="CustomerId" Placeholder="Choose TblCustomer" style="width: 100%" @bind-Value="@(tbltray.CustomerId)" Name="CustomerId">
+                <RadzenDropDownDataGrid Data="@getTblTrayTypesForTrayTypeIdResult" TextProperty="TrayName" ValueProperty="TrayTypeId" Placeholder="Choose TblTrayType" style="width: 100%" @bind-Value="@(tbltray.TrayTypeId)" Name="TrayTypeId">
                 </RadzenDropDownDataGrid>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
-                <RadzenLabel Text="Expiry Date" Component="ExpiryDate" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(tbltray.ExpiryDate)" Name="ExpiryDate">
-                </RadzenDatePicker>
               </div>
             </div>
             <div style="margin-bottom: 1rem" class="row">
@@ -42,18 +32,18 @@
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenDropDownDataGrid Data="@getTblSeedsForSeedIdResult" TextProperty="CurrentDTM" ValueProperty="SeedId" Placeholder="Choose TblSeed" style="width: 100%" @bind-Value="@(tbltray.SeedId)" Name="SeedId">
+                <RadzenDropDownDataGrid Data="@getTblSeedsForSeedIdResult" TextProperty="SeedName" ValueProperty="SeedId" Placeholder="Choose TblSeed" style="width: 100%" @bind-Value="@(tbltray.SeedId)" Name="SeedId">
                 </RadzenDropDownDataGrid>
               </div>
             </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Status" Component="Status" style="width: 100%">
+                <RadzenLabel Text="Tbl Customer" Component="CustomerId" style="width: 100%">
                 </RadzenLabel>
               </div>
               <div class="col-md-9">
-                <RadzenTextBox MaxLength="50" style="width: 100%" @bind-Value="@(tbltray.Status)" Name="Status">
-                </RadzenTextBox>
+                <RadzenDropDownDataGrid Data="@getTblCustomersForCustomerIdResult" TextProperty="CustomerName" ValueProperty="CustomerId" Placeholder="Choose TblCustomer" style="width: 100%" @bind-Value="@(tbltray.CustomerId)" Name="CustomerId">
+                </RadzenDropDownDataGrid>
               </div>
             </div>
             <div style="margin-bottom: 1rem" class="row">
@@ -82,16 +72,6 @@
             </div>
             <div style="margin-bottom: 1rem" class="row">
               <div class="col-md-3">
-                <RadzenLabel Text="Tbl Tray Type" Component="TrayTypeId" style="width: 100%">
-                </RadzenLabel>
-              </div>
-              <div class="col-md-9">
-                <RadzenDropDownDataGrid Data="@getTblTrayTypesForTrayTypeIdResult" TextProperty="TrayHandle" ValueProperty="TrayTypeId" Placeholder="Choose TblTrayType" style="width: 100%" @bind-Value="@(tbltray.TrayTypeId)" Name="TrayTypeId">
-                </RadzenDropDownDataGrid>
-              </div>
-            </div>
-            <div style="margin-bottom: 1rem" class="row">
-              <div class="col-md-3">
                 <RadzenLabel Text="Tray Update Date" Component="TrayUpdateDate" style="width: 100%">
                 </RadzenLabel>
               </div>
@@ -100,6 +80,26 @@
                 </RadzenDatePicker>
                 <RadzenRequiredValidator Component="TrayUpdateDate" Text="TrayUpdateDate is required" style="position: absolute">
                 </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Expiry Date" Component="ExpiryDate" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDatePicker DateFormat="MM/dd/yyyy" style="width: 100%" @bind-Value="@(tbltray.ExpiryDate)" Name="ExpiryDate">
+                </RadzenDatePicker>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Text="Status" Component="Status" style="width: 100%">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox MaxLength="50" style="width: 100%" @bind-Value="@(tbltray.Status)" Name="Status">
+                </RadzenTextBox>
               </div>
             </div>
             <div class="row">

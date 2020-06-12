@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class AddTblSeedComponent : ComponentBase
     {
@@ -38,8 +38,8 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        IEnumerable<Growing.Models.Growing.TblSeason> _getTblSeasonsForSeasonIdResult;
-        protected IEnumerable<Growing.Models.Growing.TblSeason> getTblSeasonsForSeasonIdResult
+        IEnumerable<Localhost.Models.Growing.TblSeason> _getTblSeasonsForSeasonIdResult;
+        protected IEnumerable<Localhost.Models.Growing.TblSeason> getTblSeasonsForSeasonIdResult
         {
             get
             {
@@ -55,8 +55,8 @@ namespace Growing.Pages
             }
         }
 
-        Growing.Models.Growing.TblSeed _tblseed;
-        protected Growing.Models.Growing.TblSeed tblseed
+        Localhost.Models.Growing.TblSeed _tblseed;
+        protected Localhost.Models.Growing.TblSeed tblseed
         {
             get
             {
@@ -88,10 +88,10 @@ namespace Growing.Pages
             var growingGetTblSeasonsResult = await Growing.GetTblSeasons();
             getTblSeasonsForSeasonIdResult = growingGetTblSeasonsResult;
 
-            tblseed = new Growing.Models.Growing.TblSeed(){};
+            tblseed = new Localhost.Models.Growing.TblSeed(){};
         }
 
-        protected async System.Threading.Tasks.Task Form0Submit(Growing.Models.Growing.TblSeed args)
+        protected async System.Threading.Tasks.Task Form0Submit(Localhost.Models.Growing.TblSeed args)
         {
             try
             {

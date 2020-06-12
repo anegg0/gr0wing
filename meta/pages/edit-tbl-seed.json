@@ -27,6 +27,255 @@
                           "components": [
                             {
                               "type": "label",
+                              "text": "Seed Name",
+                              "component": "SeedName",
+                              "name": "SeedNameLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 50,
+                              "type": "textbox",
+                              "name": "SeedName",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tblseed.SeedName}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "SeedNameRequiredValidator",
+                              "component": "SeedName",
+                              "text": "SeedName is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Seed Handle",
+                              "component": "SeedHandle",
+                              "name": "SeedHandleLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 11,
+                              "type": "textbox",
+                              "name": "SeedHandle",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tblseed.SeedHandle}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "SeedHandleRequiredValidator",
+                              "component": "SeedHandle",
+                              "text": "SeedHandle is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Seed Lifetime",
+                              "component": "SeedLifetime",
+                              "name": "SeedLifetimeLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 11,
+                              "type": "textbox",
+                              "name": "SeedLifetime",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tblseed.SeedLifetime}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "SeedLifetimeRequiredValidator",
+                              "component": "SeedLifetime",
+                              "text": "SeedLifetime is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Seeding Rate",
+                              "component": "SeedingRate",
+                              "name": "SeedingRateLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "valueType": "string",
+                              "maxLength": 11,
+                              "type": "textbox",
+                              "name": "SeedingRate",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tblseed.SeedingRate}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "SeedingRateRequiredValidator",
+                              "component": "SeedingRate",
+                              "text": "SeedingRate is required",
+                              "style": {
+                                "position": "absolute"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "Tbl Season",
+                              "component": "SeasonId",
+                              "name": "SeasonIdLabel",
+                              "style": {
+                                "width": "100%"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "col",
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "data": "${getTblSeasonsForSeasonIdResult}",
+                              "textProperty": "SeasonName",
+                              "valueProperty": "SeasonId",
+                              "placeholder": "Choose TblSeason",
+                              "valueType": "int",
+                              "type": "dropdown-datagrid",
+                              "name": "SeasonId",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "value": "${tblseed.SeasonId}"
+                            },
+                            {
+                              "type": "required-validator",
+                              "name": "SeasonIdRequiredValidator",
+                              "component": "SeasonId",
+                              "text": "SeasonId is required",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "defaultValue": "0"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "row",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "components": [
+                        {
+                          "type": "col",
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "type": "label",
                               "text": "Current Dtm",
                               "component": "CurrentDTM",
                               "name": "CurrentDTMLabel",
@@ -222,255 +471,6 @@
                     },
                     {
                       "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Tbl Season",
-                              "component": "SeasonId",
-                              "name": "SeasonIdLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "data": "${getTblSeasonsForSeasonIdResult}",
-                              "textProperty": "SeasonName",
-                              "valueProperty": "SeasonId",
-                              "placeholder": "Choose TblSeason",
-                              "valueType": "int",
-                              "type": "dropdown-datagrid",
-                              "name": "SeasonId",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tblseed.SeasonId}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "SeasonIdRequiredValidator",
-                              "component": "SeasonId",
-                              "text": "SeasonId is required",
-                              "style": {
-                                "position": "absolute"
-                              },
-                              "defaultValue": "0"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Seed Handle",
-                              "component": "SeedHandle",
-                              "name": "SeedHandleLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 11,
-                              "type": "textbox",
-                              "name": "SeedHandle",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tblseed.SeedHandle}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "SeedHandleRequiredValidator",
-                              "component": "SeedHandle",
-                              "text": "SeedHandle is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Seeding Rate",
-                              "component": "SeedingRate",
-                              "name": "SeedingRateLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 11,
-                              "type": "textbox",
-                              "name": "SeedingRate",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tblseed.SeedingRate}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "SeedingRateRequiredValidator",
-                              "component": "SeedingRate",
-                              "text": "SeedingRate is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Seed Lifetime",
-                              "component": "SeedLifetime",
-                              "name": "SeedLifetimeLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 11,
-                              "type": "textbox",
-                              "name": "SeedLifetime",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tblseed.SeedLifetime}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "SeedLifetimeRequiredValidator",
-                              "component": "SeedLifetime",
-                              "text": "SeedLifetime is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
-                      "style": {
-                        "marginBottom": "1rem"
-                      },
-                      "components": [
-                        {
-                          "type": "col",
-                          "class": "col-md-3",
-                          "components": [
-                            {
-                              "type": "label",
-                              "text": "Seed Name",
-                              "component": "SeedName",
-                              "name": "SeedNameLabel",
-                              "style": {
-                                "width": "100%"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "type": "col",
-                          "class": "col-md-9",
-                          "components": [
-                            {
-                              "valueType": "string",
-                              "maxLength": 50,
-                              "type": "textbox",
-                              "name": "SeedName",
-                              "style": {
-                                "display": "block",
-                                "width": "100%"
-                              },
-                              "value": "${tblseed.SeedName}"
-                            },
-                            {
-                              "type": "required-validator",
-                              "name": "SeedNameRequiredValidator",
-                              "component": "SeedName",
-                              "text": "SeedName is required",
-                              "style": {
-                                "position": "absolute"
-                              }
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "row",
                       "components": [
                         {
                           "type": "col",
@@ -532,7 +532,7 @@
                       }
                     ]
                   },
-                  "itemType": "Growing.Models.Growing.TblSeed",
+                  "itemType": "Localhost.Models.Growing.TblSeed",
                   "data": "${tblseed}",
                   "visible": "${tblseed != null}"
                 }
@@ -558,7 +558,7 @@
             "name": "tblseed",
             "type": "set",
             "value": "${result}",
-            "valueType": "Growing.Models.Growing.TblSeed"
+            "valueType": "Localhost.Models.Growing.TblSeed"
           }
         ],
         "error": [],
@@ -572,7 +572,7 @@
             "name": "getTblSeasonsForSeasonIdResult",
             "type": "set",
             "value": "${result}",
-            "valueType": "IEnumerable<Growing.Models.Growing.TblSeason>"
+            "valueType": "IEnumerable<Localhost.Models.Growing.TblSeason>"
           }
         ],
         "type": "invoke"

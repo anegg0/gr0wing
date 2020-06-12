@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class TblCustomersComponent : ComponentBase
     {
@@ -38,10 +38,10 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        protected RadzenGrid<Growing.Models.Growing.TblCustomer> grid0;
+        protected RadzenGrid<Localhost.Models.Growing.TblCustomer> grid0;
 
-        IEnumerable<Growing.Models.Growing.TblCustomer> _getTblCustomersResult;
-        protected IEnumerable<Growing.Models.Growing.TblCustomer> getTblCustomersResult
+        IEnumerable<Localhost.Models.Growing.TblCustomer> _getTblCustomersResult;
+        protected IEnumerable<Localhost.Models.Growing.TblCustomer> getTblCustomersResult
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Growing.Pages
             await InvokeAsync(() => { StateHasChanged(); });
         }
 
-        protected async System.Threading.Tasks.Task Grid0RowSelect(Growing.Models.Growing.TblCustomer args)
+        protected async System.Threading.Tasks.Task Grid0RowSelect(Localhost.Models.Growing.TblCustomer args)
         {
             var dialogResult = await DialogService.OpenAsync<EditTblCustomer>("Edit Tbl Customer", new Dictionary<string, object>() { {"CustomerId", args.CustomerId} });
             await InvokeAsync(() => { StateHasChanged(); });

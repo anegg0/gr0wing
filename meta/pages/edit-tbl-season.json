@@ -127,7 +127,7 @@
                       }
                     ]
                   },
-                  "itemType": "Growing.Models.Growing.TblSeason",
+                  "itemType": "Localhost.Models.Growing.TblSeason",
                   "data": "${tblseason}",
                   "visible": "${tblseason != null}"
                 }
@@ -153,7 +153,7 @@
             "name": "tblseason",
             "type": "set",
             "value": "${result}",
-            "valueType": "Growing.Models.Growing.TblSeason"
+            "valueType": "Localhost.Models.Growing.TblSeason"
           }
         ],
         "error": [],

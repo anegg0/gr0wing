@@ -1,55 +1,55 @@
 ﻿@page "/tbl-trays"
 @layout MainLayout
-@inherits Growing.Pages.TblTraysComponent
+@inherits Localhost.Pages.TblTraysComponent
 
 @using Radzen
 @using Radzen.Blazor
-@using Growing.Models.Growing
+@using Localhost.Models.Growing
 @using Microsoft.AspNetCore.Identity
-@using Growing.Models
+@using Localhost.Models
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
 <RadzenContent Container="main">
   <ChildContent>
-    <RadzenHeading Size="H1" Text="Tbl Trays">
+    <RadzenHeading Size="H1" Text="Trays">
     </RadzenHeading>
     <div class="row">
       <div class="col-md-12">
         <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
         </RadzenButton>
-        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblTraysResult" TItem="Growing.Models.Growing.TblTray" RowSelect="@Grid0RowSelect">
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblTraysResult" TItem="Localhost.Models.Growing.TblTray" RowSelect="@Grid0RowSelect">
           <Columns>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="CustomerId" SortProperty="TblCustomer.CustomerContactName" FilterProperty="TblCustomer.CustomerContactName" Title="Tbl Customer">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" Property="TrayId" Title="Tray Id">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" FilterProperty="TblTrayType.TrayName" Property="TrayTypeId" SortProperty="TblTrayType.TrayName" Title="Tbl Tray Type">
               <Template Context="data">
-              @(data.TblCustomer?.CustomerContactName)
+              @(data.TblTrayType?.TrayName)
               </Template>
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="ExpiryDate" FormatString="{0:MM/dd/yyyy}" Title="Expiry Date">
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="SeedId" SortProperty="TblSeed.CurrentDTM" FilterProperty="TblSeed.CurrentDTM" Title="Tbl Seed">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" FilterProperty="TblSeed.SeedName" Property="SeedId" SortProperty="TblSeed.SeedName" Title="Tbl Seed">
               <Template Context="data">
-              @(data.TblSeed?.CurrentDTM)
+              @(data.TblSeed?.SeedName)
               </Template>
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="Status" Title="Status">
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="TrayId" Title="Tray Id">
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="TraySequenceNumber" Title="Tray Sequence Number">
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="TraySowingDate" FormatString="{0:MM/dd/yyyy}" Title="Tray Sowing Date">
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="TrayTypeId" SortProperty="TblTrayType.TrayHandle" FilterProperty="TblTrayType.TrayHandle" Title="Tbl Tray Type">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" FilterProperty="TblCustomer.CustomerName" Property="CustomerId" SortProperty="TblCustomer.CustomerName" Title="Tbl Customer">
               <Template Context="data">
-              @(data.TblTrayType?.TrayHandle)
+              @(data.TblCustomer?.CustomerName)
               </Template>
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Property="TrayUpdateDate" FormatString="{0:MM/dd/yyyy}" Title="Tray Update Date">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" Property="TraySequenceNumber" Title="Tray Sequence Number">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblTray" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
-              <Template Context="growingModelsGrowingTblTray">
-                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, growingModelsGrowingTblTray))" @onclick:stopPropagation="true">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" FormatString="{0:MM/dd/yyyy}" Property="TraySowingDate" Title="Tray Sowing Date">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" FormatString="{0:MM/dd/yyyy}" Property="TrayUpdateDate" Title="Tray Update Date">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" FormatString="{0:MM/dd/yyyy}" Property="ExpiryDate" Title="Expiry Date">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" Property="Status" Title="Status">
+            </RadzenGridColumn>
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblTray" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
+              <Template Context="localhostModelsGrowingTblTray">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, localhostModelsGrowingTblTray))" @onclick:stopPropagation="true">
                 </RadzenButton>
               </Template>
             </RadzenGridColumn>

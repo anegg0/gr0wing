@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Growing.Models;
+using Localhost.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace Growing.Data
+namespace Localhost.Data
 {
     public partial class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser>
     {

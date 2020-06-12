@@ -10,9 +10,9 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Components;
-using Growing.Data;
+using Localhost.Data;
 
-namespace Growing
+namespace Localhost
 {
     public partial class GrowingService
     {
@@ -365,11 +365,11 @@ namespace Growing
         {
             var items = context.TblTrays.AsQueryable();
 
-            items = items.Include(i => i.TblCustomer);
+            items = items.Include(i => i.TblTrayType);
 
             items = items.Include(i => i.TblSeed);
 
-            items = items.Include(i => i.TblTrayType);
+            items = items.Include(i => i.TblCustomer);
 
             if (query != null)
             {
@@ -905,11 +905,11 @@ namespace Growing
                               .AsNoTracking()
                               .Where(i => i.TrayId == trayId);
 
-            items = items.Include(i => i.TblCustomer);
+            items = items.Include(i => i.TblTrayType);
 
             items = items.Include(i => i.TblSeed);
 
-            items = items.Include(i => i.TblTrayType);
+            items = items.Include(i => i.TblCustomer);
 
             var item = items.FirstOrDefault();
 

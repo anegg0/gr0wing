@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class TblSuppliersComponent : ComponentBase
     {
@@ -38,10 +38,10 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        protected RadzenGrid<Growing.Models.Growing.TblSupplier> grid0;
+        protected RadzenGrid<Localhost.Models.Growing.TblSupplier> grid0;
 
-        IEnumerable<Growing.Models.Growing.TblSupplier> _getTblSuppliersResult;
-        protected IEnumerable<Growing.Models.Growing.TblSupplier> getTblSuppliersResult
+        IEnumerable<Localhost.Models.Growing.TblSupplier> _getTblSuppliersResult;
+        protected IEnumerable<Localhost.Models.Growing.TblSupplier> getTblSuppliersResult
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Growing.Pages
             await InvokeAsync(() => { StateHasChanged(); });
         }
 
-        protected async System.Threading.Tasks.Task Grid0RowSelect(Growing.Models.Growing.TblSupplier args)
+        protected async System.Threading.Tasks.Task Grid0RowSelect(Localhost.Models.Growing.TblSupplier args)
         {
             var dialogResult = await DialogService.OpenAsync<EditTblSupplier>("Edit Tbl Supplier", new Dictionary<string, object>() { {"SupplierId", args.SupplierId} });
             await InvokeAsync(() => { StateHasChanged(); });

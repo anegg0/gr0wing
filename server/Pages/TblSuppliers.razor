@@ -1,46 +1,46 @@
 ﻿@page "/tbl-suppliers"
 @layout MainLayout
-@inherits Growing.Pages.TblSuppliersComponent
+@inherits Localhost.Pages.TblSuppliersComponent
 
 @using Radzen
 @using Radzen.Blazor
-@using Growing.Models.Growing
+@using Localhost.Models.Growing
 @using Microsoft.AspNetCore.Identity
-@using Growing.Models
+@using Localhost.Models
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
 
 <RadzenContent Container="main">
   <ChildContent>
-    <RadzenHeading Size="H1" Text="Tbl Suppliers">
+    <RadzenHeading Size="H1" Text="Suppliers">
     </RadzenHeading>
     <div class="row">
       <div class="col-md-12">
         <RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add" Click="@Button0Click">
         </RadzenButton>
-        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblSuppliersResult" TItem="Growing.Models.Growing.TblSupplier" RowSelect="@Grid0RowSelect">
+        <RadzenGrid @ref="grid0" AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@getTblSuppliersResult" TItem="Localhost.Models.Growing.TblSupplier" RowSelect="@Grid0RowSelect">
           <Columns>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierContactName" Title="Supplier Contact Name">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierId" Title="Supplier Id">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierCountry" Title="Supplier Country">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierContactName" Title="Supplier Contact Name">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierId" Title="Supplier Id">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierStreetAddress1" Title="Supplier Street Address 1">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierPhoneNumber1" Title="Supplier Phone Number 1">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierStreetAddress2" Title="Supplier Street Address 2">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierPhoneNumber2" Title="Supplier Phone Number 2">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierZipcode" Title="Supplier Zipcode">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierState" Title="Supplier State">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierState" Title="Supplier State">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierStreetAddress1" Title="Supplier Street Address 1">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierCountry" Title="Supplier Country">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierStreetAddress2" Title="Supplier Street Address 2">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierPhoneNumber1" Title="Supplier Phone Number 1">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Property="SupplierZipcode" Title="Supplier Zipcode">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Property="SupplierPhoneNumber2" Title="Supplier Phone Number 2">
             </RadzenGridColumn>
-            <RadzenGridColumn TItem="Growing.Models.Growing.TblSupplier" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
-              <Template Context="growingModelsGrowingTblSupplier">
-                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, growingModelsGrowingTblSupplier))" @onclick:stopPropagation="true">
+            <RadzenGridColumn TItem="Localhost.Models.Growing.TblSupplier" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
+              <Template Context="localhostModelsGrowingTblSupplier">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@((args) =>GridDeleteButtonClick(args, localhostModelsGrowingTblSupplier))" @onclick:stopPropagation="true">
                 </RadzenButton>
               </Template>
             </RadzenGridColumn>

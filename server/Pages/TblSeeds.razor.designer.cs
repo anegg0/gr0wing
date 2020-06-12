@@ -7,12 +7,12 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Radzen;
 using Radzen.Blazor;
-using Growing.Models.Growing;
+using Localhost.Models.Growing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Growing.Models;
+using Localhost.Models;
 
-namespace Growing.Pages
+namespace Localhost.Pages
 {
     public partial class TblSeedsComponent : ComponentBase
     {
@@ -38,10 +38,10 @@ namespace Growing.Pages
         [Inject]
         protected GrowingService Growing { get; set; }
 
-        protected RadzenGrid<Growing.Models.Growing.TblSeed> grid0;
+        protected RadzenGrid<Localhost.Models.Growing.TblSeed> grid0;
 
-        IEnumerable<Growing.Models.Growing.TblSeed> _getTblSeedsResult;
-        protected IEnumerable<Growing.Models.Growing.TblSeed> getTblSeedsResult
+        IEnumerable<Localhost.Models.Growing.TblSeed> _getTblSeedsResult;
+        protected IEnumerable<Localhost.Models.Growing.TblSeed> getTblSeedsResult
         {
             get
             {
@@ -82,7 +82,7 @@ namespace Growing.Pages
             await InvokeAsync(() => { StateHasChanged(); });
         }
 
-        protected async System.Threading.Tasks.Task Grid0RowSelect(Growing.Models.Growing.TblSeed args)
+        protected async System.Threading.Tasks.Task Grid0RowSelect(Localhost.Models.Growing.TblSeed args)
         {
             var dialogResult = await DialogService.OpenAsync<EditTblSeed>("Edit Tbl Seed", new Dictionary<string, object>() { {"SeedId", args.SeedId} });
             await InvokeAsync(() => { StateHasChanged(); });
